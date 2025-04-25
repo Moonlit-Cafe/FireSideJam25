@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="GameJamTemplate"
+config/name="FireSide"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
 
@@ -25,6 +25,7 @@ SoundManager="*res://autoloads/audio/sound_manager.gd"
 
 window/size/resizable=false
 window/stretch/mode="viewport"
+window/stretch/scale_mode="integer"
 
 [file_customization]
 
