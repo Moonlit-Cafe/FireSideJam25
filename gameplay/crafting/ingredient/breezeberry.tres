@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="IngredientResource" load_steps=2 format=3 uid="uid://t3g65mbldp6p"]
+
+[ext_resource type="Script" uid="uid://nm4bl7efbgm0" path="res://gameplay/crafting/ingredient_resource.gd" id="1_n1l3o"]
+
+[resource]
+script = ExtResource("1_n1l3o")
+item_name = &"Breezeberry"
+item_id = 5
+item_description = ""
+item_value = 0
+metadata/_custom_type_script = "uid://nm4bl7efbgm0"

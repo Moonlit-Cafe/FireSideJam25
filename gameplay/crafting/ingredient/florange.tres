@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="IngredientResource" load_steps=2 format=3 uid="uid://d36o1xjnx62bj"]
+
+[ext_resource type="Script" uid="uid://nm4bl7efbgm0" path="res://gameplay/crafting/ingredient_resource.gd" id="1_6se55"]
+
+[resource]
+script = ExtResource("1_6se55")
+item_name = &"Florange"
+item_id = 2
+item_description = ""
+item_value = 0
+metadata/_custom_type_script = "uid://nm4bl7efbgm0"
