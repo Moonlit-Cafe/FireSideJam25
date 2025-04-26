@@ -1,7 +1,13 @@
-[gd_resource type="Resource" script_class="RecipeResource" load_steps=2 format=3 uid="uid://cfuncks8pnjla"]
+[gd_resource type="Resource" script_class="RecipeResource" load_steps=5 format=3 uid="uid://cfuncks8pnjla"]
 
+[ext_resource type="Resource" uid="uid://d36o1xjnx62bj" path="res://gameplay/crafting/ingredient/florange.tres" id="1_cmxp8"]
 [ext_resource type="Script" uid="uid://cvojyriksvfr0" path="res://gameplay/crafting/recipe_resource.gd" id="1_kkleb"]
+[ext_resource type="Resource" uid="uid://dwjfj3x67dxgc" path="res://gameplay/crafting/ingredient/dawnapple.tres" id="2_5y0cs"]
+[ext_resource type="Resource" uid="uid://dn7f6sqqfx3g0" path="res://gameplay/crafting/bottles/kindle.tres" id="3_3oexu"]
 
 [resource]
 script = ExtResource("1_kkleb")
+item_result_bottle = ExtResource("3_3oexu")
+item_ingredient_1 = ExtResource("1_cmxp8")
+item_ingredient_2 = ExtResource("2_5y0cs")
 metadata/_custom_type_script = "uid://cvojyriksvfr0"
