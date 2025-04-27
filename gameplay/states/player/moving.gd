@@ -1,9 +1,7 @@
 extends PlayerState
 
-const SPEED : int = 2 * 64
-
 var dir := Vector2.ZERO
-var player : CharacterBody2D
+var player : Player
 
 func enter(previous_state : StringName, data := {}) -> void:
 	print("Entered Moving State")
@@ -25,5 +23,5 @@ func animate() -> void:
 	pass
 
 func move() -> void:
-	player.velocity = dir * SPEED
+	player.velocity = dir * player.SPEED
 	player.move_and_slide()
