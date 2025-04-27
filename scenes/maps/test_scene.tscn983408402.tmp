@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://fdoqp6no700r"]
+
+[ext_resource type="PackedScene" uid="uid://chyl3t1141o8e" path="res://scenes/entity/player/player.tscn" id="1_hshav"]
+[ext_resource type="PackedScene" uid="uid://d3bcpjhqcfdmd" path="res://scenes/entity/camera/main_camera.tscn" id="2_a5bem"]
+[ext_resource type="Texture2D" uid="uid://st4f6a75cxp7" path="res://assets/images/sprites/character_2_frame16x20.png" id="3_a5bem"]
+[ext_resource type="PackedScene" uid="uid://h1uqmbwvxxwh" path="res://scenes/entity/crafting_tables/crafting_spot.tscn" id="4_83srw"]
+
+[node name="TestScene" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_hshav")]
+
+[node name="MainCamera" parent="." instance=ExtResource("2_a5bem")]
+zoom = Vector2(2, 2)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("3_a5bem")
+hframes = 3
+vframes = 4
+
+[node name="CraftingSpot" parent="." instance=ExtResource("4_83srw")]
+position = Vector2(149, 80)

@@ -1,9 +1,11 @@
 extends PlayerState
 
 var dir := Vector2.ZERO
+var player : Player
 
 func enter(previous_state : StringName, data := {}) -> void:
 	print("Entered Moving State")
+	player = owner
 
 func physics_update(delta : float) -> void:
 	get_input()
@@ -21,4 +23,5 @@ func animate() -> void:
 	pass
 
 func move() -> void:
-	pass
+	player.velocity = dir * player.SPEED
+	player.move_and_slide()
