@@ -4,7 +4,7 @@
 
 [resource]
 script = ExtResource("1_rt0lj")
-item_name = &"Dusgrapes"
+ref_name = &"Dusgrapes"
 item_id = 7
 item_description = ""
 item_value = 0

@@ -8,6 +8,11 @@ var interaction_collision : InteractableTile
 
 func _ready() -> void:
 	add_to_group(&"player", true)
+	InventoryManager.add_item(&"Florange")
+	InventoryManager.add_item(&"Dawnapple")
+	CraftingManager.craft(&"Florange", &"Dawnapple")
+	
+	InventoryManager.get_inventory()
 
 func _physics_process(delta: float) -> void:
 	_check_interaction()

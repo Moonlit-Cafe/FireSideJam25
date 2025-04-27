@@ -4,7 +4,7 @@
 
 [resource]
 script = ExtResource("1_trgb6")
-bottle_name = &"Kindle"
+ref_name = &"Kindle"
 bottle_description = ""
 bottle_value = 0
 metadata/_custom_type_script = "uid://dsrgaj2m41yk7"
