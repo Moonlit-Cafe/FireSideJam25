@@ -2,8 +2,11 @@
 
 [ext_resource type="Script" uid="uid://mvx57to7smcg" path="res://ui/crafting_ui.gd" id="1_46k18"]
 
-[node name="CraftingUI" type="CanvasLayer"]
+[node name="CraftingUI" type="CanvasLayer" node_paths=PackedStringArray("ingredient_1", "ingredient_2")]
+visible = false
 script = ExtResource("1_46k18")
+ingredient_1 = NodePath("CraftingInterface/MarginContainer/VBoxContainer/IngredientContainer/Ingredient1")
+ingredient_2 = NodePath("CraftingInterface/MarginContainer/VBoxContainer/IngredientContainer/Ingredient2")
 
 [node name="CraftingInterface" type="PanelContainer" parent="."]
 anchors_preset = 8
@@ -53,3 +56,6 @@ text = "Clear"
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Craft"
+
+[connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
+[connection signal="pressed" from="CraftingInterface/MarginContainer/VBoxContainer/ButtonContainer/Craft" to="." method="_on_craft_button_pressed"]

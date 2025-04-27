@@ -3,6 +3,7 @@ class_name Player extends CharacterBody2D
 const SPEED : int = 8 * 16
 
 @export var interaction_check_list : Array[RayCast2D]
+@export var crafting_ui : CanvasLayer
 
 var interaction_collision : InteractableTile
 
@@ -10,12 +11,19 @@ func _ready() -> void:
 	add_to_group(&"player", true)
 	InventoryManager.add_item(&"Florange")
 	InventoryManager.add_item(&"Dawnapple")
-	CraftingManager.craft(&"Florange", &"Dawnapple")
 	
 	InventoryManager.get_inventory()
 
 func _physics_process(delta: float) -> void:
 	_check_interaction()
+
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("interact") and interaction_collision:
+		if crafting_ui:
+			if not crafting_ui.visible:
+				crafting_ui.show()
+			else:
+				crafting_ui.hide()
 
 func _check_interaction() -> void:
 	for check in interaction_check_list:
