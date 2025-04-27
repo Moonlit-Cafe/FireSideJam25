@@ -1,5 +1,6 @@
-[gd_scene load_steps=13 format=3 uid="uid://chyl3t1141o8e"]
+[gd_scene load_steps=8 format=3 uid="uid://chyl3t1141o8e"]
 
+[ext_resource type="Script" uid="uid://cchjok5y28nhn" path="res://scenes/entity/player/player.gd" id="1_njr5w"]
 [ext_resource type="Texture2D" uid="uid://st4f6a75cxp7" path="res://assets/images/sprites/character_2_frame16x20.png" id="1_ypewr"]
 [ext_resource type="Script" uid="uid://bctgl8dm64tv6" path="res://utility/state_machine/state_machine.gd" id="2_eefhw"]
 [ext_resource type="Script" uid="uid://du54xj3qy0cgk" path="res://gameplay/states/player/idle_state.gd" id="3_eefhw"]
@@ -7,67 +8,18 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4fs46"]
 
-[sub_resource type="Animation" id="Animation_4fs46"]
-resource_name = "idle_bottem"
-length = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame_coords")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [Vector2i(1, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_njr5w"]
-resource_name = "idle_up"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame_coords")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [Vector2i(1, 3)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_qpw6s"]
-_data = {
-&"idle_bottem": SubResource("Animation_4fs46"),
-&"idle_up": SubResource("Animation_njr5w")
-}
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_bu3a2"]
-animation = &"idle_bottem"
-
-[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_jhnb8"]
-blend_point_0/node = SubResource("AnimationNodeAnimation_bu3a2")
-blend_point_0/pos = Vector2(0, -1)
-blend_mode = 1
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_jo4e4"]
-advance_mode = 2
-
-[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_ih27x"]
-states/Idle/node = SubResource("AnimationNodeBlendSpace2D_jhnb8")
-states/Idle/position = Vector2(394, 100)
-transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_jo4e4")]
-graph_offset = Vector2(72, 12)
 
 [node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_njr5w")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_ypewr")
 hframes = 3
 vframes = 4
 frame = 1
+
+[node name="Interaction" type="CanvasLayer" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_4fs46")
@@ -82,15 +34,7 @@ script = ExtResource("3_eefhw")
 [node name="Moving" type="Node" parent="StateMachine"]
 script = ExtResource("4_4fs46")
 
-[node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(2, 2)
-
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 &"": SubResource("AnimationLibrary_qpw6s")
 }
-
-[node name="AnimationTree" type="AnimationTree" parent="."]
-tree_root = SubResource("AnimationNodeStateMachine_ih27x")
-anim_player = NodePath("../AnimationPlayer")
-parameters/Idle/blend_position = Vector2(0, -0.934066)
