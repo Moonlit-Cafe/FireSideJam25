@@ -3,11 +3,17 @@ class_name Player extends CharacterBody2D
 const SPEED : int = 8 * 16
 
 @export var interaction_check_list : Array[RayCast2D]
-@export var crafting_ui : CanvasLayer
+@export var anim_tree : AnimationTree
+
+@export var ui_holder : Array[CanvasLayer]
 
 var interaction_collision : InteractableTile
+var anim_state_machine : AnimationNodeStateMachinePlayback
 
 func _ready() -> void:
+	if anim_tree:
+		anim_state_machine = anim_tree.get("parameters/playback")
+	
 	add_to_group(&"player", true)
 	InventoryManager.add_item(&"Florange")
 	InventoryManager.add_item(&"Dawnapple")
@@ -19,11 +25,17 @@ func _physics_process(delta: float) -> void:
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("interact") and interaction_collision:
-		if crafting_ui:
-			if not crafting_ui.visible:
-				crafting_ui.show()
-			else:
-				crafting_ui.hide()
+		interaction_collision.interaction_event()
+	elif event.is_action_pressed("close_menu"):
+		var all_closed = true
+		for ui in ui_holder:
+			if ui.visible:
+				ui.hide()
+				all_closed = false
+				break
+		
+		if all_closed:
+			GameGlobalEvents.pause_game.emit()
 
 func _check_interaction() -> void:
 	for check in interaction_check_list:

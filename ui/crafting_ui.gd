@@ -3,6 +3,9 @@ extends CanvasLayer
 @export var ingredient_1 : OptionButton
 @export var ingredient_2 : OptionButton
 
+func _ready() -> void:
+	GameGlobalEvents.open_craft_menu.connect(func (): show())
+
 func _on_visibility_changed() -> void:
 	if visible:
 		ingredient_1.clear()

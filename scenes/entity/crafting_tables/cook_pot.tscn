@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://h1uqmbwvxxwh"]
+
+[ext_resource type="Script" uid="uid://logs6wrujyvq" path="res://scenes/entity/crafting_tables/cook_pot.gd" id="1_8klwu"]
+[ext_resource type="Texture2D" uid="uid://criojxarma2wp" path="res://assets/images/sprites/props/cook-pot.png" id="2_qr25j"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qr25j"]
+size = Vector2(16, 16)
+
+[node name="CookPot" type="StaticBody2D"]
+collision_layer = 3
+collision_mask = 2
+script = ExtResource("1_8klwu")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_qr25j")
+offset = Vector2(0, -0.5)
+hframes = 18
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 4)
+shape = SubResource("RectangleShape2D_qr25j")
