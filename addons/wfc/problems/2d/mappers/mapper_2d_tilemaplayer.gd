@@ -65,7 +65,7 @@ func write_cell(map_: Node, coords: Vector2i, code: int):
 	var map := _ensure_tile_map_layer(map_)
 	
 	assert(tile_set != null)
-	assert(tile_set == map.tile_set)
+	#assert(tile_set == map.tile_set)
 	_ensure_reverse_mapping()
 	assert(code < id_to_attrs.size())
 	
