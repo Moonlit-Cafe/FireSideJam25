@@ -4,7 +4,7 @@
 
 [resource]
 script = ExtResource("1_wg6bl")
-item_name = &"Zanana"
+ref_name = &"Zanana"
 item_id = 1
 item_description = ""
 item_value = 0
