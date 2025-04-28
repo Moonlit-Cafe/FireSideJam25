@@ -7,3 +7,9 @@ enum BusID {
 	UI,
 	AMBIENT
 }
+
+enum InteractableType {
+	CRAFTING,
+	ITEM,
+	NPC
+}

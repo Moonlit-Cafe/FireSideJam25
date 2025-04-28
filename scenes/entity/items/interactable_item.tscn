@@ -1,0 +1,19 @@
+[gd_scene load_steps=5 format=3 uid="uid://cjakxnhxai5mb"]
+
+[ext_resource type="Texture2D" uid="uid://c21jfox4k0l4i" path="res://assets/images/sprites/foliage/cherry-blosom-tree.png" id="1_c5qxb"]
+[ext_resource type="Script" uid="uid://c66mmd7np42id" path="res://scenes/entity/items/interactable_item.gd" id="1_uirgf"]
+[ext_resource type="Resource" uid="uid://t3g65mbldp6p" path="res://gameplay/crafting/ingredient/breezeberry.tres" id="2_ci7m6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uirgf"]
+size = Vector2(32, 32)
+
+[node name="InteractableItem" type="StaticBody2D"]
+collision_layer = 2
+script = ExtResource("1_uirgf")
+item_type = ExtResource("2_ci7m6")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_c5qxb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_uirgf")
