@@ -2,12 +2,10 @@ class_name Player extends CharacterBody2D
 
 const SPEED : int = 8 * 16
 
-@export var interaction_check_list : Array[RayCast2D]
 @export var anim_tree : AnimationTree
 
-@export var ui_holder : Array[CanvasLayer]
-
 var interaction_collision : InteractableTile
+var interactable : Array[InteractableTile]
 var anim_state_machine : AnimationNodeStateMachinePlayback
 
 func _ready() -> void:
@@ -20,12 +18,17 @@ func _ready() -> void:
 	
 	InventoryManager.get_inventory()
 
-func _physics_process(delta: float) -> void:
-	_check_interaction()
-
 func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("interact") and interaction_collision:
-		interaction_collision.interaction_event()
+	if event.is_action_pressed("interact") and interactable.size() > 1:
+		var shortest_dist : float = 1000.
+		var closest_obj : InteractableTile
+		for inter_obj in interactable:
+			if global_position.distance_to(inter_obj.global_position) < shortest_dist:
+				shortest_dist = global_position.distance_to(inter_obj.global_position)
+				closest_obj = inter_obj
+		closest_obj.interaction_event()
+	elif event.is_action_pressed("interact") and interactable.size() > 0:
+		interactable[0].interaction_event()
 	elif event.is_action_pressed("close_menu"):
 		var ui_nodes := get_tree().get_nodes_in_group(&"ui")
 		var all_closed = true
@@ -38,16 +41,17 @@ func _input(event: InputEvent) -> void:
 		if all_closed:
 			GameGlobalEvents.pause_game.emit()
 
-func _check_interaction() -> void:
-	for check in interaction_check_list:
-		if check.is_colliding():
-			var body := check.get_collider()
-			if body is InteractableTile:
-				interaction_collision = body
-				interaction_collision.colliding_check = check
-	
-	if interaction_collision:
-		if interaction_check_list.has(interaction_collision.colliding_check):
-			if not interaction_collision.colliding_check.is_colliding():
-				interaction_collision.colliding_check = null
-				interaction_collision = null
+func _on_body_entered(body: Node2D) -> void:
+	interactable.append(body)
+
+func _on_body_exited(body: Node2D) -> void:
+	for inter_obj in interactable:
+		if inter_obj == body:
+			if inter_obj.interact_type == Genum.InteractableType.CRAFTING:
+				var ui_nodes = get_tree().get_nodes_in_group(&"ui")
+				
+				for ui in ui_nodes:
+					if ui.name == &"CraftingUI" and ui.visible:
+						ui.hide()
+			
+			interactable.erase(inter_obj)

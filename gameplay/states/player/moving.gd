@@ -7,14 +7,6 @@ var player : Player
 func enter(previous_state : StringName, data := {}) -> void:
 	player = owner
 	player.anim_state_machine.travel("Moving")
-	
-	if player.interaction_collision:
-		if player.interaction_collision.interact_type == Genum.InteractableType.CRAFTING:
-			var ui_nodes = get_tree().get_nodes_in_group(&"ui")
-			
-			for ui in ui_nodes:
-				if ui.name == &"CraftingUI" and ui.visible:
-					ui.hide()
 
 func physics_update(delta : float) -> void:
 	get_input()

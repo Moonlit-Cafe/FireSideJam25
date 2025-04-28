@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://chyl3t1141o8e"]
+[gd_scene load_steps=32 format=3 uid="uid://chyl3t1141o8e"]
 
 [ext_resource type="Script" uid="uid://cchjok5y28nhn" path="res://scenes/entity/player/player.gd" id="1_njr5w"]
 [ext_resource type="Script" uid="uid://bctgl8dm64tv6" path="res://utility/state_machine/state_machine.gd" id="2_eefhw"]
@@ -9,9 +9,11 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4fs46"]
 size = Vector2(14, 20)
 
-[sub_resource type="Animation" id="Animation_qpw6s"]
-resource_name = "idle_up"
-length = 0.0333
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_njr5w"]
+size = Vector2(43, 60)
+
+[sub_resource type="Animation" id="Animation_p7phs"]
+length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -22,7 +24,23 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [4]
+"values": [12]
+}
+
+[sub_resource type="Animation" id="Animation_jo4e4"]
+resource_name = "idle_down"
+length = 0.033
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
 }
 
 [sub_resource type="Animation" id="Animation_bu3a2"]
@@ -57,9 +75,9 @@ tracks/0/keys = {
 "values": [8]
 }
 
-[sub_resource type="Animation" id="Animation_jo4e4"]
-resource_name = "idle_down"
-length = 0.033
+[sub_resource type="Animation" id="Animation_qpw6s"]
+resource_name = "idle_up"
+length = 0.0333
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -70,41 +88,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [0]
-}
-
-[sub_resource type="Animation" id="Animation_ih27x"]
-resource_name = "move_up"
-length = 0.5
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.125, 0.25, 0.375),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [4, 5, 6, 7]
-}
-
-[sub_resource type="Animation" id="Animation_q5dhb"]
-resource_name = "move_left"
-length = 0.5
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.125, 0.25, 0.375),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [12, 13, 14, 15]
+"values": [4]
 }
 
 [sub_resource type="Animation" id="Animation_tewvn"]
@@ -124,6 +108,23 @@ tracks/0/keys = {
 "values": [0, 1, 2, 3]
 }
 
+[sub_resource type="Animation" id="Animation_q5dhb"]
+resource_name = "move_left"
+length = 0.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.125, 0.25, 0.375),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [12, 13, 14, 15]
+}
+
 [sub_resource type="Animation" id="Animation_5h6xr"]
 resource_name = "move_right"
 length = 0.5
@@ -141,8 +142,10 @@ tracks/0/keys = {
 "values": [8, 9, 10, 11]
 }
 
-[sub_resource type="Animation" id="Animation_p7phs"]
-length = 0.001
+[sub_resource type="Animation" id="Animation_ih27x"]
+resource_name = "move_up"
+length = 0.5
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -150,10 +153,10 @@ tracks/0/path = NodePath("Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.125, 0.25, 0.375),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": [12]
+"values": [4, 5, 6, 7]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_qpw6s"]
@@ -231,9 +234,8 @@ states/Moving/position = Vector2(664, 100)
 states/Start/position = Vector2(188, 100)
 transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_q5dhb"), "Idle", "Moving", SubResource("AnimationNodeStateMachineTransition_tewvn"), "Moving", "Idle", SubResource("AnimationNodeStateMachineTransition_5h6xr")]
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("interaction_check_list", "anim_tree")]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("anim_tree")]
 script = ExtResource("1_njr5w")
-interaction_check_list = [NodePath("UpCheck"), NodePath("RightCheck"), NodePath("DownCheck"), NodePath("LeftCheck")]
 anim_tree = NodePath("AnimationTree")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -256,23 +258,12 @@ script = ExtResource("3_eefhw")
 [node name="Moving" type="Node" parent="StateMachine"]
 script = ExtResource("4_4fs46")
 
-[node name="UpCheck" type="RayCast2D" parent="."]
-target_position = Vector2(0, -16)
-collision_mask = 2
-hit_from_inside = true
-collide_with_areas = true
-
-[node name="RightCheck" type="RayCast2D" parent="."]
-target_position = Vector2(16, 0)
+[node name="InteractCheck" type="Area2D" parent="."]
+collision_layer = 2
 collision_mask = 2
 
-[node name="DownCheck" type="RayCast2D" parent="."]
-target_position = Vector2(0, 16)
-collision_mask = 2
-
-[node name="LeftCheck" type="RayCast2D" parent="."]
-target_position = Vector2(-16, 0)
-collision_mask = 2
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractCheck"]
+shape = SubResource("RectangleShape2D_njr5w")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -285,3 +276,6 @@ anim_player = NodePath("../AnimationPlayer")
 parameters/conditions/moving = false
 parameters/Idle/blend_position = Vector2(-0.0031898, 0.89011)
 parameters/Moving/blend_position = Vector2(0, 0)
+
+[connection signal="body_entered" from="InteractCheck" to="." method="_on_body_entered"]
+[connection signal="body_exited" from="InteractCheck" to="." method="_on_body_exited"]
