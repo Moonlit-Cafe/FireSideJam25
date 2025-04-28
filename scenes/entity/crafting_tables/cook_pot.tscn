@@ -1,10 +1,48 @@
-[gd_scene load_steps=4 format=3 uid="uid://h1uqmbwvxxwh"]
+[gd_scene load_steps=7 format=3 uid="uid://h1uqmbwvxxwh"]
 
 [ext_resource type="Script" uid="uid://logs6wrujyvq" path="res://scenes/entity/crafting_tables/cook_pot.gd" id="1_8klwu"]
 [ext_resource type="Texture2D" uid="uid://criojxarma2wp" path="res://assets/images/sprites/props/cook-pot.png" id="2_qr25j"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qr25j"]
 size = Vector2(16, 16)
+
+[sub_resource type="Animation" id="Animation_8klwu"]
+resource_name = "idle"
+length = 1.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17]
+}
+
+[sub_resource type="Animation" id="Animation_hbb84"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ew7e6"]
+_data = {
+&"RESET": SubResource("Animation_hbb84"),
+&"idle": SubResource("Animation_8klwu")
+}
 
 [node name="CookPot" type="StaticBody2D"]
 collision_layer = 3
@@ -15,7 +53,13 @@ script = ExtResource("1_8klwu")
 texture = ExtResource("2_qr25j")
 offset = Vector2(0, -0.5)
 hframes = 18
+frame = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 4)
 shape = SubResource("RectangleShape2D_qr25j")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_ew7e6")
+}

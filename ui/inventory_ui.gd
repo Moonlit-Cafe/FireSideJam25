@@ -3,6 +3,9 @@ extends CanvasLayer
 @export var item_list : VBoxContainer
 @export var close_button : Button
 
+func _ready() -> void:
+	add_to_group(&"ui")
+
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed(&"open_inventory"):
 		if visible:

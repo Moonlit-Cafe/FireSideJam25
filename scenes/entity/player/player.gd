@@ -27,8 +27,9 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("interact") and interaction_collision:
 		interaction_collision.interaction_event()
 	elif event.is_action_pressed("close_menu"):
+		var ui_nodes := get_tree().get_nodes_in_group(&"ui")
 		var all_closed = true
-		for ui in ui_holder:
+		for ui in ui_nodes:
 			if ui.visible:
 				ui.hide()
 				all_closed = false

@@ -4,6 +4,8 @@ extends CanvasLayer
 @export var ingredient_2 : OptionButton
 
 func _ready() -> void:
+	add_to_group(&"ui")
+	
 	GameGlobalEvents.open_craft_menu.connect(func (): show())
 
 func _on_visibility_changed() -> void:
