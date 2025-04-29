@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://dkdx6n4u0dcf0"]
+
+[ext_resource type="Script" uid="uid://d21f8f8uxjrcp" path="res://ui/components/animated_texture_rect.gd" id="1_hxof0"]
+
+[node name="AnimatedTextureRect" type="TextureRect"]
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_hxof0")
