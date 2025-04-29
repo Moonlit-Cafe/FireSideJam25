@@ -1,10 +1,11 @@
-[gd_scene load_steps=32 format=3 uid="uid://chyl3t1141o8e"]
+[gd_scene load_steps=33 format=3 uid="uid://chyl3t1141o8e"]
 
 [ext_resource type="Script" uid="uid://cchjok5y28nhn" path="res://scenes/entity/player/player.gd" id="1_njr5w"]
 [ext_resource type="Script" uid="uid://bctgl8dm64tv6" path="res://utility/state_machine/state_machine.gd" id="2_eefhw"]
 [ext_resource type="Texture2D" uid="uid://owgbb0xyc4gr" path="res://assets/images/sprites/player/player-walk-cycle.png" id="2_njr5w"]
 [ext_resource type="Script" uid="uid://du54xj3qy0cgk" path="res://gameplay/states/player/idle_state.gd" id="3_eefhw"]
 [ext_resource type="Script" uid="uid://boluqvltdogbu" path="res://gameplay/states/player/moving.gd" id="4_4fs46"]
+[ext_resource type="Script" uid="uid://ccp1wn3jt0wpj" path="res://gameplay/states/player/pause_state.gd" id="6_qpw6s"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4fs46"]
 size = Vector2(14, 20)
@@ -257,6 +258,9 @@ script = ExtResource("3_eefhw")
 
 [node name="Moving" type="Node" parent="StateMachine"]
 script = ExtResource("4_4fs46")
+
+[node name="Pause" type="Node" parent="StateMachine"]
+script = ExtResource("6_qpw6s")
 
 [node name="InteractCheck" type="Area2D" parent="."]
 collision_layer = 2

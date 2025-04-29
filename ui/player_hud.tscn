@@ -2,10 +2,12 @@
 
 [ext_resource type="Script" uid="uid://bln6xet7rme5o" path="res://ui/player_hud.gd" id="1_1m6my"]
 
-[node name="PlayerHUD" type="CanvasLayer" node_paths=PackedStringArray("date", "time")]
+[node name="PlayerHUD" type="CanvasLayer" node_paths=PackedStringArray("date", "time", "wait_screen")]
+layer = 4
 script = ExtResource("1_1m6my")
 date = NodePath("Clock/MarginContainer/VBoxContainer/DateContainer/Day")
 time = NodePath("Clock/MarginContainer/VBoxContainer/TimeContainer/Time")
+wait_screen = NodePath("ColorRect")
 
 [node name="Clock" type="PanelContainer" parent="."]
 offset_right = 40.0
@@ -45,3 +47,11 @@ layout_mode = 2
 size_flags_horizontal = 3
 text = "0"
 horizontal_alignment = 1
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.125911, 0.125911, 0.125911, 1)

@@ -116,6 +116,7 @@ animations = [{
 }]
 
 [node name="CraftingUI" type="CanvasLayer" node_paths=PackedStringArray("ingredient_1", "ingredient_2", "content", "animated_texture")]
+visible = false
 script = ExtResource("1_46k18")
 ingredient_1 = NodePath("Control/AnimatedTextureRect/Content/LeftPage/VBoxContainer/IngredientContainer/Ingredient1")
 ingredient_2 = NodePath("Control/AnimatedTextureRect/Content/LeftPage/VBoxContainer/IngredientContainer/Ingredient2")

@@ -105,10 +105,84 @@
 			#if tile_id != null:
 				#self.set_cell()
 
-extends Node2D
+class_name LevelGenerator extends Node2D
 
+signal generated_map
+
+@export var main : TileMapLayer
+@export var deco : TileMapLayer
+@export var wfc_generator : WFC2DGenerator
+@export var biomes_ex : FastNoiseLite
+@export var collectable_ref : PackedScene
+@export var collectable_holder : Node
+
+var biomes := FastNoiseLite.new()
 
 func _ready() -> void:
 	$sample.hide()
 	$target.show()
-	$WFC2DGenerator.start()
+	_generate_biomes()
+
+func find_safe_starting_pos() -> Vector2:
+	var middle_point := wfc_generator.rect.size / 2
+	var starting_point : Vector2i = middle_point
+	var tile_data : TileData = main.get_cell_tile_data(starting_point)
+	
+	while tile_data.terrain != 0:
+		starting_point += Vector2i(randi_range(-1, 1), randi_range(-1, 1))
+		tile_data = main.get_cell_tile_data(starting_point)
+	
+	return to_global(main.map_to_local(starting_point))
+
+func _generate_biomes() -> void:
+	biomes.seed = randi()
+	biomes.frequency = 0.04
+	biomes.noise_type = FastNoiseLite.TYPE_SIMPLEX_SMOOTH
+	var cell_count : int = 0
+	
+	for x in range(wfc_generator.rect.size.x):
+		for y in range(wfc_generator.rect.size.y):
+			var biome = biomes.get_noise_2d(x, y) * 10
+			
+			if _check_biome_allow(biome, 1, .5) and _check_cell_allow(Vector2i(x, y), 0):
+				cell_count += 1
+				main.set_cell(Vector2i(x, y), 0, Vector2i(1, 1))
+			elif _check_biome_allow(biome, -2, .1) and _check_cell_allow(Vector2i(x, y), 2):
+				cell_count += 1
+				main.set_cell(Vector2i(x, y), 6, Vector2(2, 1))
+	
+	print("Placed %s cells" % cell_count)
+	wfc_generator.start()
+	await wfc_generator.done
+	_add_collectables()
+
+func _add_collectables() -> void:
+	for x in range(wfc_generator.rect.size.x):
+		for y in range(wfc_generator.rect.size.y):
+			if deco.get_cell_tile_data(Vector2i(x, y)):
+				print("Creating Collectable")
+				var collectable : InteractableTile = collectable_ref.instantiate()
+				collectable_holder.add_child(collectable)
+				collectable.global_position = to_global(deco.map_to_local(Vector2i(x, y)))
+
+func _check_biome_allow(cell_value: float, value: float, delta: float) -> bool:
+	return (value - delta < cell_value) and  (cell_value < value + delta)
+
+func _check_cell_allow(pos: Vector2i, terrain_id: int) -> bool:
+	var check_area := [
+		Vector2i(-1, -1), Vector2i(0, -1), Vector2i(1, -1),
+		Vector2i(-1, 0), Vector2i(1, 0),
+		Vector2i(-1, 1), Vector2i(0, 1), Vector2i(1, 1),
+	]
+	
+	for area in check_area:
+		var checked_tile = main.get_cell_tile_data(pos + area)
+		if checked_tile and main.get:
+			if terrain_id != checked_tile.terrain:
+				return false
+	
+	return true
+
+func _on_wfc_finished() -> void:
+	generated_map.emit()
+	$progressIndicator.hide()
