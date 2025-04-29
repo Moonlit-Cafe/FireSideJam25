@@ -1,12 +1,13 @@
 class_name AnimatedTextureRect extends TextureRect
 
+signal animation_finished
+
 @export var sprites : SpriteFrames
 @export var current_animation := &"default"
 @export var frame_index : int = 0
 @export_range(0.0, INF, 0.001) var speed_scale := 1.0
 @export var auto_play := false
 @export var playing := false
-@export var allow_looping := false
 
 var refresh_rate := 1.0
 var fps := 30.0
@@ -48,10 +49,11 @@ func get_next_frame() -> Texture2D:
 	frame_index += 1
 	var frame_count = sprites.get_frame_count(current_animation)
 	if frame_index >= frame_count:
-		if allow_looping:
+		if sprites.get_animation_loop(current_animation):
 			frame_index = 0
 		else:
 			frame_index -= 1
+			animation_finished.emit()
 			pause()
 	
 	get_animation_data(current_animation)

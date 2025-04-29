@@ -34,7 +34,10 @@ func _input(event: InputEvent) -> void:
 		var all_closed = true
 		for ui in ui_nodes:
 			if ui.visible:
-				ui.hide()
+				if ui.name == &"CraftingUI":
+					ui.close_craft_menu()
+				else:
+					ui.hide()
 				all_closed = false
 				break
 		
@@ -52,6 +55,6 @@ func _on_body_exited(body: Node2D) -> void:
 				
 				for ui in ui_nodes:
 					if ui.name == &"CraftingUI" and ui.visible:
-						ui.hide()
+						ui.close_craft_menu()
 			
 			interactable.erase(inter_obj)
