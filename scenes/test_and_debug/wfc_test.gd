@@ -110,11 +110,12 @@ class_name LevelGenerator extends Node2D
 @export var main : TileMapLayer
 @export var deco : TileMapLayer
 @export var wfc_generator : WFC2DGenerator
-@export var biomes_ex : FastNoiseLite
 @export var collectable_ref : PackedScene
 @export var collectable_holder : Node
 
-var biomes := FastNoiseLite.new()
+var lush := FastNoiseLite.new()
+var humidity := FastNoiseLite.new()
+var wind_speed := FastNoiseLite.new()
 
 func _ready() -> void:
 	$sample.hide()
@@ -135,35 +136,46 @@ func find_safe_starting_pos() -> Vector2:
 func _generate_biomes() -> void:
 	GameGlobalEvents.map_generating.emit()
 	
-	biomes.seed = randi()
-	biomes.frequency = 0.04
-	biomes.noise_type = FastNoiseLite.TYPE_SIMPLEX_SMOOTH
+	_define_noise(lush)
+	_define_noise(humidity)
+	_define_noise(wind_speed)
 	var cell_count : int = 0
 	
 	for x in range(wfc_generator.rect.size.x):
 		for y in range(wfc_generator.rect.size.y):
-			var biome = biomes.get_noise_2d(x, y) * 10
+			var lushness = lush.get_noise_2d(x, y) * 10
+			var humid = humidity.get_noise_2d(x, y) * 10
+			var windy = wind_speed.get_noise_2d(x, y) * 10
 			
-			if _check_biome_allow(biome, 1, .5) and _check_cell_allow(Vector2i(x, y), 0):
-				cell_count += 1
-				main.set_cell(Vector2i(x, y), 0, Vector2i(1, 1))
-			elif _check_biome_allow(biome, -2, .1) and _check_cell_allow(Vector2i(x, y), 2):
-				cell_count += 1
-				main.set_cell(Vector2i(x, y), 6, Vector2(2, 1))
+			_place_biome_tile(lushness, humid, windy, Vector2i(x, y))
 	
-	print("Placed %s cells" % cell_count)
 	wfc_generator.start()
 	await wfc_generator.done
 	_add_collectables()
+
+func _define_noise(noise: FastNoiseLite) -> void:
+	noise.seed = randi()
+	noise.frequency = 0.05
+	noise.noise_type = FastNoiseLite.TYPE_SIMPLEX_SMOOTH
 
 func _add_collectables() -> void:
 	for x in range(wfc_generator.rect.size.x):
 		for y in range(wfc_generator.rect.size.y):
 			if deco.get_cell_tile_data(Vector2i(x, y)):
-				print("Creating Collectable")
 				var collectable : InteractableTile = collectable_ref.instantiate()
 				collectable_holder.add_child(collectable)
 				collectable.global_position = to_global(deco.map_to_local(Vector2i(x, y)))
+
+func _place_biome_tile(l_noise: float, h_noise: float, w_noise: float, pos: Vector2i) -> void:
+	# Grass Placement
+	if l_noise > 3 and h_noise < 0 and _check_cell_allow(pos, 0):
+		main.set_cell(pos, 0, Vector2i(1, 1))
+	elif l_noise < -1 and h_noise > 3 and _check_cell_allow(pos, 2):
+		main.set_cell(pos, 6, Vector2i(2, 1))
+	elif l_noise < 2 and w_noise < -2 and h_noise < 0 and _check_cell_allow(pos, 3):
+		main.set_cell(pos, 1, Vector2i(2, 1))
+	elif w_noise > 5 and _check_cell_allow(pos, 4):
+		main.set_cell(pos, 2, Vector2i(2, 1))
 
 func _check_biome_allow(cell_value: float, value: float, delta: float) -> bool:
 	return (value - delta < cell_value) and  (cell_value < value + delta)
