@@ -5,6 +5,8 @@ extends CanvasLayer
 
 func _ready() -> void:
 	add_to_group(&"ui")
+	
+	InventoryManager.add_to_inventory.connect(_update_inventory_list)
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed(&"open_inventory"):
