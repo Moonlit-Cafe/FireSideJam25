@@ -107,8 +107,6 @@
 
 class_name LevelGenerator extends Node2D
 
-signal generated_map
-
 @export var main : TileMapLayer
 @export var deco : TileMapLayer
 @export var wfc_generator : WFC2DGenerator
@@ -135,6 +133,8 @@ func find_safe_starting_pos() -> Vector2:
 	return to_global(main.map_to_local(starting_point))
 
 func _generate_biomes() -> void:
+	GameGlobalEvents.map_generating.emit()
+	
 	biomes.seed = randi()
 	biomes.frequency = 0.04
 	biomes.noise_type = FastNoiseLite.TYPE_SIMPLEX_SMOOTH
@@ -184,5 +184,5 @@ func _check_cell_allow(pos: Vector2i, terrain_id: int) -> bool:
 	return true
 
 func _on_wfc_finished() -> void:
-	generated_map.emit()
+	GameGlobalEvents.map_generated.emit()
 	$progressIndicator.hide()

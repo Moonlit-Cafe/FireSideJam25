@@ -1,0 +1,23 @@
+[gd_scene load_steps=7 format=3 uid="uid://dluxylcoh10ed"]
+
+[ext_resource type="Script" uid="uid://q8ksqv4v03p7" path="res://scenes/game.gd" id="1_lbhrr"]
+[ext_resource type="PackedScene" uid="uid://dvjfhde2vj0gk" path="res://ui/crafting_ui.tscn" id="2_iywne"]
+[ext_resource type="PackedScene" uid="uid://bfwg2611momlg" path="res://scenes/maps/campsite.tscn" id="2_p57ef"]
+[ext_resource type="PackedScene" uid="uid://bqru4lqx2nxf1" path="res://ui/inventory_ui.tscn" id="3_p57ef"]
+[ext_resource type="PackedScene" uid="uid://d3bcpjhqcfdmd" path="res://scenes/entity/camera/main_camera.tscn" id="3_u5sy4"]
+[ext_resource type="PackedScene" uid="uid://b73v7be5subyc" path="res://ui/player_hud.tscn" id="4_u5sy4"]
+
+[node name="Game" type="Node" node_paths=PackedStringArray("game_node")]
+script = ExtResource("1_lbhrr")
+game_node = NodePath("GameScene")
+starting_scene = ExtResource("2_p57ef")
+
+[node name="GameScene" type="Node2D" parent="."]
+
+[node name="MainCamera" parent="." instance=ExtResource("3_u5sy4")]
+
+[node name="CraftingUI" parent="." instance=ExtResource("2_iywne")]
+
+[node name="InventoryUI" parent="." instance=ExtResource("3_p57ef")]
+
+[node name="PlayerHUD" parent="." instance=ExtResource("4_u5sy4")]

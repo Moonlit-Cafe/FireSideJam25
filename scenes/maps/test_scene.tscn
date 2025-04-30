@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://fdoqp6no700r"]
+[gd_scene load_steps=10 format=3 uid="uid://fdoqp6no700r"]
 
 [ext_resource type="Script" uid="uid://1176hnd61itl" path="res://scenes/maps/test_scene.gd" id="1_c687a"]
 [ext_resource type="PackedScene" uid="uid://chyl3t1141o8e" path="res://scenes/entity/player/player.tscn" id="1_hshav"]
@@ -8,7 +8,6 @@
 [ext_resource type="PackedScene" uid="uid://bqru4lqx2nxf1" path="res://ui/inventory_ui.tscn" id="5_ym167"]
 [ext_resource type="PackedScene" uid="uid://dvjfhde2vj0gk" path="res://ui/crafting_ui.tscn" id="6_2pg6w"]
 [ext_resource type="PackedScene" uid="uid://cjakxnhxai5mb" path="res://scenes/entity/items/interactable_item.tscn" id="6_wt4yt"]
-[ext_resource type="Resource" uid="uid://t3g65mbldp6p" path="res://gameplay/crafting/ingredient/breezeberry.tres" id="8_17jvn"]
 [ext_resource type="PackedScene" uid="uid://tn8wnpcsxrq5" path="res://scenes/test_and_debug/wfc_test.tscn" id="9_3ja2f"]
 
 [node name="TestScene" type="Node2D" node_paths=PackedStringArray("map_gen", "player")]
@@ -42,4 +41,3 @@ position = Vector2(85, 30)
 
 [node name="InteractableItem" parent="." instance=ExtResource("6_wt4yt")]
 position = Vector2(-99, -6)
-item_type = ExtResource("8_17jvn")

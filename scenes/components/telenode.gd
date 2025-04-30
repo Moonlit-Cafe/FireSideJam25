@@ -1,0 +1,7 @@
+extends Area2D
+
+@export var next_scene : PackedScene
+
+func _on_body_entered(body: Node) -> void:
+	print("Body Entered")
+	SceneTransitionManager.to_next_scene(next_scene)

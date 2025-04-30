@@ -20,6 +20,7 @@ config/icon="res://icon.svg"
 
 GameGlobal="*res://autoloads/general/game_global.gd"
 GameGlobalEvents="*res://autoloads/general/game_global_events.gd"
+SceneTransitionManager="*res://autoloads/scenes/scene_transition_manager.gd"
 MusicManager="*res://autoloads/audio/music_manager.gd"
 SoundManager="*res://autoloads/audio/sound_manager.gd"
 CraftingManager="*res://autoloads/crafting/crafting_manager.gd"

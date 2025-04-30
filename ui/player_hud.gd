@@ -5,7 +5,10 @@ extends CanvasLayer
 @export var wait_screen : ColorRect
 
 func _ready() -> void:
+	wait_screen.color.a = 0
+	
 	GameGlobalEvents.time_changed.connect(_on_time_changed)
+	GameGlobalEvents.map_generating.connect(_on_map_generating)
 	GameGlobalEvents.map_generated.connect(_on_map_generated)
 
 func _get_current_time() -> String:
@@ -31,9 +34,17 @@ func _get_current_time() -> String:
 func _on_time_changed() -> void:
 	time.text = _get_current_time()
 	date.text = str(GameGlobal.days)
-#endregion
+
+func _on_map_generating() -> void:
+	var new_color := wait_screen.color
+	new_color.a = 1
+	wait_screen.color = new_color
 
 func _on_map_generated() -> void:
+	var new_color := wait_screen.color
+	new_color.a = 0
+	
 	var tween := get_tree().create_tween().bind_node(wait_screen) as Tween
-	tween.tween_property(wait_screen, "color", Color(wait_screen.color.r, wait_screen.color.g, wait_screen.color.b, 0), 1)
+	tween.tween_property(wait_screen, "color", new_color, 1)
 	GameGlobalEvents.resume_game.emit()
+#endregion
