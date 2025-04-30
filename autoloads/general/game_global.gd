@@ -11,7 +11,7 @@ var days : int = 0
 
 #region Helper Variables
 var time_tick : int = 2
-var time_delta : int = 60 * 4
+var time_delta : int = 5
 #endregion
 
 #region Loading Up
@@ -34,7 +34,11 @@ func _on_day_timer_timeout() -> void:
 	
 	time_of_day += time_delta
 	
+	if time_of_day % 30 == 0:
+		GameGlobalEvents.check_item_respawn.emit()
+	
 	GameGlobalEvents.time_changed.emit()
+	
 	day_timer.start(time_tick)
 #endregion
 

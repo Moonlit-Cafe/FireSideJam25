@@ -1,5 +1,6 @@
 extends Node
 
+signal check_item_respawn
 signal open_craft_menu
 signal map_generating
 signal map_generated

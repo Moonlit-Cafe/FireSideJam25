@@ -178,7 +178,7 @@ func _place_biome_tile(l_noise: float, h_noise: float, w_noise: float, pos: Vect
 		main.set_cell(pos, 2, Vector2i(2, 1))
 
 func _check_biome_allow(cell_value: float, value: float, delta: float) -> bool:
-	return (value - delta < cell_value) and  (cell_value < value + delta)
+	return (value - delta < cell_value) and (cell_value < value + delta)
 
 func _check_cell_allow(pos: Vector2i, terrain_id: int) -> bool:
 	var check_area := [

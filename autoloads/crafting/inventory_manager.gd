@@ -1,5 +1,7 @@
 extends Node
 
+signal add_to_inventory
+
 var inventory : Dictionary[StringName, int]
 
 func get_inventory() -> Dictionary[StringName, int]:

@@ -12,7 +12,7 @@ config_version=5
 
 config/name="FireSide"
 config/version="0.0.0"
-run/main_scene="uid://fdoqp6no700r"
+run/main_scene="uid://dluxylcoh10ed"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
 
