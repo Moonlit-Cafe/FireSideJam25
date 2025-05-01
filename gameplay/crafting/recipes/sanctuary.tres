@@ -1,7 +1,11 @@
-[gd_resource type="Resource" script_class="RecipeResource" load_steps=2 format=3 uid="uid://etx7osbsgjxp"]
+[gd_resource type="Resource" script_class="RecipeResource" load_steps=4 format=3 uid="uid://etx7osbsgjxp"]
 
+[ext_resource type="Resource" uid="uid://dwjfj3x67dxgc" path="res://gameplay/crafting/ingredient/dawnapple.tres" id="1_03unh"]
 [ext_resource type="Script" uid="uid://cvojyriksvfr0" path="res://gameplay/crafting/recipe_resource.gd" id="1_ijahn"]
+[ext_resource type="Resource" uid="uid://cdr48ighyod3a" path="res://gameplay/crafting/ingredient/geotato.tres" id="2_yvgx1"]
 
 [resource]
 script = ExtResource("1_ijahn")
+item_ingredient_1 = ExtResource("1_03unh")
+item_ingredient_2 = ExtResource("2_yvgx1")
 metadata/_custom_type_script = "uid://cvojyriksvfr0"

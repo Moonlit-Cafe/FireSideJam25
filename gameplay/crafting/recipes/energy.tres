@@ -1,7 +1,11 @@
-[gd_resource type="Resource" script_class="RecipeResource" load_steps=2 format=3 uid="uid://cju0d8bthi7e5"]
+[gd_resource type="Resource" script_class="RecipeResource" load_steps=4 format=3 uid="uid://cju0d8bthi7e5"]
 
 [ext_resource type="Script" uid="uid://cvojyriksvfr0" path="res://gameplay/crafting/recipe_resource.gd" id="1_1oiu2"]
+[ext_resource type="Resource" uid="uid://d36o1xjnx62bj" path="res://gameplay/crafting/ingredient/florange.tres" id="1_libx8"]
+[ext_resource type="Resource" uid="uid://b6k50wgph8o2o" path="res://gameplay/crafting/ingredient/zanana.tres" id="2_riwko"]
 
 [resource]
 script = ExtResource("1_1oiu2")
+item_ingredient_1 = ExtResource("1_libx8")
+item_ingredient_2 = ExtResource("2_riwko")
 metadata/_custom_type_script = "uid://cvojyriksvfr0"

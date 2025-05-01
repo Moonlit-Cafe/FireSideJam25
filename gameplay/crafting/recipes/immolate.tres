@@ -1,7 +1,11 @@
-[gd_resource type="Resource" script_class="RecipeResource" load_steps=2 format=3 uid="uid://bxy3gvdtj45sj"]
+[gd_resource type="Resource" script_class="RecipeResource" load_steps=4 format=3 uid="uid://bxy3gvdtj45sj"]
 
+[ext_resource type="Resource" uid="uid://d36o1xjnx62bj" path="res://gameplay/crafting/ingredient/florange.tres" id="1_3qj5c"]
 [ext_resource type="Script" uid="uid://cvojyriksvfr0" path="res://gameplay/crafting/recipe_resource.gd" id="1_nwo0m"]
+[ext_resource type="Resource" uid="uid://th8r0rx5u1tg" path="res://gameplay/crafting/ingredient/dusgrapes.tres" id="2_px7yo"]
 
 [resource]
 script = ExtResource("1_nwo0m")
+item_ingredient_1 = ExtResource("1_3qj5c")
+item_ingredient_2 = ExtResource("2_px7yo")
 metadata/_custom_type_script = "uid://cvojyriksvfr0"

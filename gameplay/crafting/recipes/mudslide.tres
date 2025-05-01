@@ -1,7 +1,11 @@
-[gd_resource type="Resource" script_class="RecipeResource" load_steps=2 format=3 uid="uid://dlrktu1yv0v87"]
+[gd_resource type="Resource" script_class="RecipeResource" load_steps=4 format=3 uid="uid://dlrktu1yv0v87"]
 
+[ext_resource type="Resource" uid="uid://cu6uq2ejbuc2t" path="res://gameplay/crafting/ingredient/watermelon.tres" id="1_cq5l3"]
 [ext_resource type="Script" uid="uid://cvojyriksvfr0" path="res://gameplay/crafting/recipe_resource.gd" id="1_uwlpa"]
+[ext_resource type="Resource" uid="uid://cdr48ighyod3a" path="res://gameplay/crafting/ingredient/geotato.tres" id="2_die0a"]
 
 [resource]
 script = ExtResource("1_uwlpa")
+item_ingredient_1 = ExtResource("1_cq5l3")
+item_ingredient_2 = ExtResource("2_die0a")
 metadata/_custom_type_script = "uid://cvojyriksvfr0"

@@ -1,7 +1,11 @@
-[gd_resource type="Resource" script_class="RecipeResource" load_steps=2 format=3 uid="uid://dqnd183ypkvkg"]
+[gd_resource type="Resource" script_class="RecipeResource" load_steps=4 format=3 uid="uid://dqnd183ypkvkg"]
 
 [ext_resource type="Script" uid="uid://cvojyriksvfr0" path="res://gameplay/crafting/recipe_resource.gd" id="1_qijry"]
+[ext_resource type="Resource" uid="uid://th8r0rx5u1tg" path="res://gameplay/crafting/ingredient/dusgrapes.tres" id="1_ylftg"]
+[ext_resource type="Resource" uid="uid://t3g65mbldp6p" path="res://gameplay/crafting/ingredient/breezeberry.tres" id="2_cenn8"]
 
 [resource]
 script = ExtResource("1_qijry")
+item_ingredient_1 = ExtResource("1_ylftg")
+item_ingredient_2 = ExtResource("2_cenn8")
 metadata/_custom_type_script = "uid://cvojyriksvfr0"

@@ -1,7 +1,11 @@
-[gd_resource type="Resource" script_class="RecipeResource" load_steps=2 format=3 uid="uid://ck48k2infguxr"]
+[gd_resource type="Resource" script_class="RecipeResource" load_steps=4 format=3 uid="uid://ck48k2infguxr"]
 
 [ext_resource type="Script" uid="uid://cvojyriksvfr0" path="res://gameplay/crafting/recipe_resource.gd" id="1_77pkg"]
+[ext_resource type="Resource" uid="uid://d36o1xjnx62bj" path="res://gameplay/crafting/ingredient/florange.tres" id="1_vdaii"]
+[ext_resource type="Resource" uid="uid://t3g65mbldp6p" path="res://gameplay/crafting/ingredient/breezeberry.tres" id="2_shb3e"]
 
 [resource]
 script = ExtResource("1_77pkg")
+item_ingredient_1 = ExtResource("1_vdaii")
+item_ingredient_2 = ExtResource("2_shb3e")
 metadata/_custom_type_script = "uid://cvojyriksvfr0"
