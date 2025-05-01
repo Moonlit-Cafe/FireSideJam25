@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="RecipeResource" load_steps=2 format=3 uid="uid://bxy3gvdtj45sj"]
+
+[ext_resource type="Script" uid="uid://cvojyriksvfr0" path="res://gameplay/crafting/recipe_resource.gd" id="1_nwo0m"]
+
+[resource]
+script = ExtResource("1_nwo0m")
+metadata/_custom_type_script = "uid://cvojyriksvfr0"

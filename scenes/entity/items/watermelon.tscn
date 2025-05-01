@@ -1,0 +1,118 @@
+[gd_scene load_steps=19 format=3 uid="uid://8ncxew5ka20c"]
+
+[ext_resource type="Script" uid="uid://c66mmd7np42id" path="res://scenes/entity/items/interactable_item.gd" id="1_ps7pc"]
+[ext_resource type="Resource" uid="uid://cu6uq2ejbuc2t" path="res://gameplay/crafting/ingredient/watermelon.tres" id="2_bsyeb"]
+[ext_resource type="Texture2D" uid="uid://bbldicxsi3k56" path="res://assets/images/sprites/fruit/watermelon-small.png" id="3_b3e5u"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yon3l"]
+atlas = ExtResource("3_b3e5u")
+region = Rect2(0, 0, 16, 15)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pgjxc"]
+atlas = ExtResource("3_b3e5u")
+region = Rect2(16, 0, 16, 15)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gutoc"]
+atlas = ExtResource("3_b3e5u")
+region = Rect2(32, 0, 16, 15)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_drwe4"]
+atlas = ExtResource("3_b3e5u")
+region = Rect2(48, 0, 16, 15)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g1srx"]
+atlas = ExtResource("3_b3e5u")
+region = Rect2(64, 0, 16, 15)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xbkiq"]
+atlas = ExtResource("3_b3e5u")
+region = Rect2(80, 0, 16, 15)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_naj0m"]
+atlas = ExtResource("3_b3e5u")
+region = Rect2(96, 0, 16, 15)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sn2gv"]
+atlas = ExtResource("3_b3e5u")
+region = Rect2(112, 0, 16, 15)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e2xlu"]
+atlas = ExtResource("3_b3e5u")
+region = Rect2(128, 0, 16, 15)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3dwds"]
+atlas = ExtResource("3_b3e5u")
+region = Rect2(144, 0, 16, 15)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jye85"]
+atlas = ExtResource("3_b3e5u")
+region = Rect2(160, 0, 16, 15)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dk3cl"]
+atlas = ExtResource("3_b3e5u")
+region = Rect2(176, 0, 16, 15)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cy0et"]
+atlas = ExtResource("3_b3e5u")
+region = Rect2(192, 0, 16, 15)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ulprs"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yon3l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pgjxc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gutoc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_drwe4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g1srx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xbkiq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_naj0m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sn2gv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e2xlu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3dwds")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jye85")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dk3cl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cy0et")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_afmpp"]
+size = Vector2(16, 16)
+
+[node name="Watermelon" type="StaticBody2D"]
+script = ExtResource("1_ps7pc")
+item_type = ExtResource("2_bsyeb")
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_ulprs")
+frame_progress = 0.0560843
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_afmpp")

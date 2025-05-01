@@ -10,9 +10,7 @@ size = Vector2(32, 32)
 collision_layer = 2
 script = ExtResource("1_uirgf")
 item_type = ExtResource("2_ci7m6")
-sprite = NodePath("Sprite2D")
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
+sprite = NodePath("")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_uirgf")

@@ -7,6 +7,7 @@ var day_timer : Timer
 #region Global Variables
 var time_of_day : int = 0
 var days : int = 0
+var rng := RandomNumberGenerator.new()
 #endregion
 
 #region Helper Variables
@@ -31,6 +32,8 @@ func _on_day_timer_timeout() -> void:
 	if time_of_day >= (60 * 24) - time_delta:
 		time_of_day -= (60 * 24)
 		days += 1
+		if days % 7 == 0:
+			GameGlobalEvents.weekly_check.emit()
 	
 	time_of_day += time_delta
 	

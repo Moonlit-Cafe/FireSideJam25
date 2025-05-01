@@ -3,6 +3,7 @@ extends Node
 signal add_to_inventory
 
 var inventory : Dictionary[StringName, int]
+var money : int
 
 func get_inventory() -> Dictionary[StringName, int]:
 	return inventory
