@@ -21,7 +21,6 @@ player = NodePath("Player")
 z_index = 10
 
 [node name="MainCamera" parent="." instance=ExtResource("2_a5bem")]
-zoom = Vector2(3, 3)
 
 [node name="InventoryUI" parent="." instance=ExtResource("5_ym167")]
 

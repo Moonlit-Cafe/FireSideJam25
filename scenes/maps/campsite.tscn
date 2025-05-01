@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=4 uid="uid://bfwg2611momlg"]
+[gd_scene load_steps=6 format=4 uid="uid://bfwg2611momlg"]
 
 [ext_resource type="TileSet" uid="uid://ont3d4pvxurd" path="res://assets/images/wave_tiles/new_wave_tile_set.tres" id="1_mjuae"]
 [ext_resource type="PackedScene" uid="uid://da0wcwl7metb" path="res://scenes/components/telenode.tscn" id="2_p8b62"]
 [ext_resource type="PackedScene" uid="uid://fdoqp6no700r" path="res://scenes/maps/test_scene.tscn" id="3_f2y84"]
 [ext_resource type="PackedScene" uid="uid://chyl3t1141o8e" path="res://scenes/entity/player/player.tscn" id="4_p8b62"]
+[ext_resource type="PackedScene" uid="uid://h1uqmbwvxxwh" path="res://scenes/entity/crafting_tables/cook_pot.tscn" id="5_f2y84"]
 
 [node name="Campsite" type="Node2D"]
 
@@ -16,3 +17,6 @@ position = Vector2(118, -8)
 next_scene = ExtResource("3_f2y84")
 
 [node name="Player" parent="." instance=ExtResource("4_p8b62")]
+
+[node name="CookPot" parent="." instance=ExtResource("5_f2y84")]
+position = Vector2(-54, -28)

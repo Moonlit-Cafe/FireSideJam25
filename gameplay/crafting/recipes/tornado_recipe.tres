@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="RecipeResource" load_steps=5 format=3 uid="uid://db13trorsvgfx"]
+
+[ext_resource type="Resource" uid="uid://t3g65mbldp6p" path="res://gameplay/crafting/ingredient/breezeberry.tres" id="1_as7de"]
+[ext_resource type="Script" uid="uid://cvojyriksvfr0" path="res://gameplay/crafting/recipe_resource.gd" id="1_nous2"]
+[ext_resource type="Resource" uid="uid://th8r0rx5u1tg" path="res://gameplay/crafting/ingredient/dusgrapes.tres" id="2_nom1x"]
+[ext_resource type="Resource" uid="uid://crk0owllbopx0" path="res://gameplay/crafting/bottles/tornado.tres" id="3_albw4"]
+
+[resource]
+script = ExtResource("1_nous2")
+item_result_bottle = ExtResource("3_albw4")
+item_ingredient_1 = ExtResource("1_as7de")
+item_ingredient_2 = ExtResource("2_nom1x")
+metadata/_custom_type_script = "uid://cvojyriksvfr0"

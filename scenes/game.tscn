@@ -21,3 +21,16 @@ starting_scene = ExtResource("2_p57ef")
 [node name="InventoryUI" parent="." instance=ExtResource("3_p57ef")]
 
 [node name="PlayerHUD" parent="." instance=ExtResource("4_u5sy4")]
+
+[node name="FmodBankLoader" type="FmodBankLoader" parent="."]
+bank_paths = ["res://assets/banks/Master.strings.bank", "res://assets/banks/Master.bank", "res://assets/banks/ost.bank", "res://assets/banks/sfx.bank"]
+
+[node name="FmodListener2D" type="FmodListener2D" parent="."]
+
+[node name="FmodEventEmitter2D" type="FmodEventEmitter2D" parent="."]
+event_name = "event:/ost/music/overworld"
+event_guid = "{2ee7d06f-ae4b-446a-ae01-31d1b2c7e3dc}"
+autoplay = true
+"fmod_parameters/overworld vol/id" = 2141386595623732036
+"fmod_parameters/overworld vol" = 1.0
+"fmod_parameters/overworld vol/variant_type" = 3

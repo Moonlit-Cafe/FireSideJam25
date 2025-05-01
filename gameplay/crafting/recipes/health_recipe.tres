@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="RecipeResource" load_steps=5 format=3 uid="uid://bywu87xcrnat5"]
+
+[ext_resource type="Script" uid="uid://cvojyriksvfr0" path="res://gameplay/crafting/recipe_resource.gd" id="1_4xatf"]
+[ext_resource type="Resource" uid="uid://cu6uq2ejbuc2t" path="res://gameplay/crafting/ingredient/watermelon.tres" id="1_5sumv"]
+[ext_resource type="Resource" uid="uid://dwjfj3x67dxgc" path="res://gameplay/crafting/ingredient/dawnapple.tres" id="2_wud28"]
+[ext_resource type="Resource" uid="uid://bxvgaghglkhlv" path="res://gameplay/crafting/bottles/health.tres" id="3_yhk30"]
+
+[resource]
+script = ExtResource("1_4xatf")
+item_result_bottle = ExtResource("3_yhk30")
+item_ingredient_1 = ExtResource("1_5sumv")
+item_ingredient_2 = ExtResource("2_wud28")
+metadata/_custom_type_script = "uid://cvojyriksvfr0"

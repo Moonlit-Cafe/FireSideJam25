@@ -32,6 +32,7 @@ func craft(ing_1: StringName, ing_2: StringName) -> void:
 		push_warning("There is no such recipe with %s and %s as ingredients" % [ing_1, ing_2])
 
 func _load_resources(path: String, type: String, storage: Dictionary) -> void:
+	pass
 	var loaded_path := ResourceLoader.list_directory(path)
 	for item in loaded_path:
 		var loaded_item = ResourceLoader.load(path + item, type)

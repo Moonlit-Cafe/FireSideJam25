@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="RecipeResource" load_steps=5 format=3 uid="uid://baqj75ihrbfmh"]
+
+[ext_resource type="Script" uid="uid://cvojyriksvfr0" path="res://gameplay/crafting/recipe_resource.gd" id="1_51vne"]
+[ext_resource type="Resource" uid="uid://t3g65mbldp6p" path="res://gameplay/crafting/ingredient/breezeberry.tres" id="1_v46ra"]
+[ext_resource type="Resource" uid="uid://cdr48ighyod3a" path="res://gameplay/crafting/ingredient/geotato.tres" id="2_fna5j"]
+[ext_resource type="Resource" uid="uid://b1k78ynhw0enq" path="res://gameplay/crafting/bottles/gravity.tres" id="3_w6m2y"]
+
+[resource]
+script = ExtResource("1_51vne")
+item_result_bottle = ExtResource("3_w6m2y")
+item_ingredient_1 = ExtResource("1_v46ra")
+item_ingredient_2 = ExtResource("2_fna5j")
+metadata/_custom_type_script = "uid://cvojyriksvfr0"

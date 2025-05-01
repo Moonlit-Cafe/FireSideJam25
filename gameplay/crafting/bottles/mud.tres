@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="BottleResource" load_steps=2 format=3 uid="uid://cd32dblp60wvj"]
+
+[ext_resource type="Script" uid="uid://dsrgaj2m41yk7" path="res://gameplay/crafting/bottle_resource.gd" id="1_h8b4c"]
+
+[resource]
+script = ExtResource("1_h8b4c")
+ref_name = &"Mud"
+bottle_description = ""
+bottle_value = 0
+metadata/_custom_type_script = "uid://dsrgaj2m41yk7"

@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="RecipeResource" load_steps=5 format=3 uid="uid://ddcw4jql0882a"]
+
+[ext_resource type="Script" uid="uid://cvojyriksvfr0" path="res://gameplay/crafting/recipe_resource.gd" id="1_aaqyj"]
+[ext_resource type="Resource" uid="uid://cu6uq2ejbuc2t" path="res://gameplay/crafting/ingredient/watermelon.tres" id="1_g83ql"]
+[ext_resource type="Resource" uid="uid://d36o1xjnx62bj" path="res://gameplay/crafting/ingredient/florange.tres" id="2_drgh5"]
+[ext_resource type="Resource" uid="uid://4hvaj7ohj0j5" path="res://gameplay/crafting/bottles/blind.tres" id="3_sff2l"]
+
+[resource]
+script = ExtResource("1_aaqyj")
+item_result_bottle = ExtResource("3_sff2l")
+item_ingredient_1 = ExtResource("1_g83ql")
+item_ingredient_2 = ExtResource("2_drgh5")
+metadata/_custom_type_script = "uid://cvojyriksvfr0"
