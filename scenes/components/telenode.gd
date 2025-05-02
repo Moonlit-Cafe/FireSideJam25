@@ -10,6 +10,7 @@ func teleport() -> void:
 
 func _on_body_entered(body: Node) -> void:
 	if not prompt and tele_prompt:
+		GameGlobalEvents.pause_game.emit()
 		prompt = tele_prompt.instantiate()
 		get_tree().root.add_child(prompt)
 		prompt.set_node(self)

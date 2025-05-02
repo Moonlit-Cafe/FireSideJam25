@@ -8,10 +8,15 @@ func _ready() -> void:
 	JobManager.job_selected.connect(_on_job_selected)
 
 func fill_task_menu() -> void:
+	_clear_task_list()
 	for task in JobManager.available_jobs:
 		var task_item = task_item_scene.instantiate() as TaskItem
 		task_list.add_child(task_item)
 		task_item.assign_task(task)
+
+func _clear_task_list() -> void:
+	for child in task_list.get_children():
+		task_list.remove_child(child)
 
 func _on_visibility_changed() -> void:
 	if visible:

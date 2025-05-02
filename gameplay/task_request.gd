@@ -21,7 +21,7 @@ func generate_request() -> void:
 func generate_ingredient_request() -> void:
 	var ingredients : Array[StringName] = CraftingManager.ingredients.keys()
 	request_needed = ingredients[GameGlobal.rng.randi_range(0, ingredients.size() - 1)]
-	request_count = GameGlobal.rng.randi_range(0, 10)
+	request_count = GameGlobal.rng.randi_range(1, 10)
 	request_value = CraftingManager.ingredients.get(request_needed).item_value * request_count
 	requester = REQUESTERS[GameGlobal.rng.randi_range(0, REQUESTERS.size() - 1)]
 	
@@ -30,7 +30,7 @@ func generate_ingredient_request() -> void:
 func generate_bottle_request() -> void:
 	var bottles : Array[StringName] = CraftingManager.bottles.keys()
 	request_needed = bottles[GameGlobal.rng.randi_range(0, bottles.size() - 1)]
-	request_count = GameGlobal.rng.randi_range(0, 10)
+	request_count = GameGlobal.rng.randi_range(1, 10)
 	request_value = CraftingManager.bottles.get(request_needed).bottle_value * request_count
 	requester = REQUESTERS[GameGlobal.rng.randi_range(0, REQUESTERS.size() - 1)]
 	
