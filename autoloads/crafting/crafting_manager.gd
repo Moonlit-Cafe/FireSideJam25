@@ -34,8 +34,24 @@ func _load_resources(path: String, type: String, storage: Dictionary) -> void:
 	pass
 	var loaded_path := ResourceLoader.list_directory(path)
 	for item in loaded_path:
-		var loaded_item = ResourceLoader.load(path + item, type)
+		var loaded_item = load_asset(path + item)
 		if loaded_item is RecipeResource:
 			storage.set(loaded_item.item_result_bottle.ref_name, loaded_item)
 		else:
 			storage.set(loaded_item.ref_name, loaded_item)
+
+static func load_asset(path : String) -> Resource:
+	if OS.has_feature("export"):
+		# Check if file is .remap
+		if not path.ends_with(".remap"):
+			return load(path)
+		
+		# Open the file
+		var __config_file = ConfigFile.new()
+		__config_file.load(path)
+		# Load the remapped file
+		var __remapped_file_path = __config_file.get_value("remap", "path")
+		__config_file = null
+		return load(__remapped_file_path)
+	else:
+		return load(path)
