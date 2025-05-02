@@ -1,14 +1,17 @@
-[gd_scene load_steps=3 format=3 uid="uid://da0wcwl7metb"]
+[gd_scene load_steps=4 format=3 uid="uid://da0wcwl7metb"]
 
 [ext_resource type="Script" uid="uid://cmcohs5amro26" path="res://scenes/components/telenode.gd" id="1_qucx2"]
+[ext_resource type="PackedScene" uid="uid://qhfokvoeeyqp" path="res://ui/teleprompt.tscn" id="2_uujey"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_05sjj"]
 size = Vector2(16, 16)
 
 [node name="Telenode" type="Area2D"]
 script = ExtResource("1_qucx2")
+tele_prompt = ExtResource("2_uujey")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_05sjj")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

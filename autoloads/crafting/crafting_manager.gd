@@ -7,7 +7,6 @@ var general_path := "res://gameplay/crafting/"
 
 func _ready() -> void:
 	_load_resources(general_path + "bottles/", "BottleResource", bottles)
-	print(bottles)
 	_load_resources(general_path + "ingredient/", "IngredientResource", ingredients)
 	_load_resources(general_path + "recipes/", "RecipeResource", recipes)
 
@@ -38,6 +37,5 @@ func _load_resources(path: String, type: String, storage: Dictionary) -> void:
 		var loaded_item = ResourceLoader.load(path + item, type)
 		if loaded_item is RecipeResource:
 			storage.set(loaded_item.item_result_bottle.ref_name, loaded_item)
-			print(loaded_item.item_result_bottle.ref_name)
 		else:
 			storage.set(loaded_item.ref_name, loaded_item)
