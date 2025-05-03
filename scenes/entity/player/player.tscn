@@ -256,8 +256,11 @@ initial_state = NodePath("Idle")
 [node name="Idle" type="Node" parent="StateMachine"]
 script = ExtResource("3_eefhw")
 
-[node name="Moving" type="Node" parent="StateMachine"]
+[node name="Moving" type="Node" parent="StateMachine" node_paths=PackedStringArray("walk_timer")]
 script = ExtResource("4_4fs46")
+walk_timer = NodePath("Walk")
+
+[node name="Walk" type="Timer" parent="StateMachine/Moving"]
 
 [node name="Pause" type="Node" parent="StateMachine"]
 script = ExtResource("6_qpw6s")

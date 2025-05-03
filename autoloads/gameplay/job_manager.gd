@@ -2,6 +2,8 @@ extends Node
 
 signal job_selected
 
+# TODO: Need to show selected jobs somewhere
+
 var selected_jobs : Array[TaskRequest]
 var max_selectable_jobs : int = 3
 var available_jobs : Array[TaskRequest]

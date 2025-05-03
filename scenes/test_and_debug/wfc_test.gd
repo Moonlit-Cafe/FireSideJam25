@@ -113,6 +113,7 @@ class_name LevelGenerator extends Node2D
 @export var collectable_ref : PackedScene
 @export var collectable_holder : Node
 
+# TODO: Find a better way of utilizing these, may just reduce to 2.
 var lush := FastNoiseLite.new()
 var humidity := FastNoiseLite.new()
 var wind_speed := FastNoiseLite.new()
@@ -136,11 +137,14 @@ func find_safe_starting_pos() -> Vector2:
 func _generate_biomes() -> void:
 	GameGlobalEvents.map_generating.emit()
 	
+	# TODO: Also include a radial or even quadrant region where biomes may spawn
 	_define_noise(lush)
 	_define_noise(humidity)
 	_define_noise(wind_speed)
 	var cell_count : int = 0
 	
+	# TODO: Need more rivers and less lakes, got to figure out how to remove the weird
+	# single-tile patchy-ness I see.
 	for x in range(wfc_generator.rect.size.x):
 		for y in range(wfc_generator.rect.size.y):
 			var lushness = lush.get_noise_2d(x, y) * 10
@@ -159,6 +163,8 @@ func _define_noise(noise: FastNoiseLite) -> void:
 	noise.noise_type = FastNoiseLite.TYPE_SIMPLEX_SMOOTH
 
 func _add_collectables() -> void:
+	# TODO: Change handling to include each different collectable item . . .
+	# also need to make each new collectable item.
 	for x in range(wfc_generator.rect.size.x):
 		for y in range(wfc_generator.rect.size.y):
 			if deco.get_cell_tile_data(Vector2i(x, y)):

@@ -1,5 +1,7 @@
 extends Node
 
+# TODO: Define all resources in detail bottle, recipe, ingredient
+
 #region Children
 var day_timer : Timer
 #endregion

@@ -5,6 +5,8 @@ class_name TaskItem extends PanelContainer
 
 var task : TaskRequest
 
+# TODO: Might want to make a popup for additional description?
+
 func assign_task(task: TaskRequest) -> void:
 	self.task = task
 	request_label.text = "Need %s %s" % [task.request_count, task.request_needed]

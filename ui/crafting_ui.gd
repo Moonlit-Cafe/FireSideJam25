@@ -1,5 +1,7 @@
 extends CanvasLayer
 
+# TODO: This ui amongst others need to look and work better.
+
 @export var ingredient_1 : OptionButton
 @export var ingredient_2 : OptionButton
 @export var content : Control

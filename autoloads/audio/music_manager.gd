@@ -32,6 +32,8 @@ func remove_ost(stream_name: StringName) -> void:
 
 #region Usage Functions
 func play_song(song_name: StringName, crossover: bool = false) -> void:
+	# TODO: Need to be able to loop the song as Yuvi describes, might need to change
+	# how songs are loaded?
 	if not song_pool.has(song_name):
 		push_error("There's no song by the name %s in song_pool" % song_name)
 	
@@ -59,6 +61,13 @@ func play_song(song_name: StringName, crossover: bool = false) -> void:
 	else:
 		main_music_player.stream = song_pool.get(song_name)
 		main_music_player.play()
+
+func play_jingle(sfx: StringName) -> void:
+	# TODO: Need to crossfade with an ost to do the "jingle" that Yuvi needs
+	if main_music_player.playing:
+		var vol = main_music_player.volume_linear
+		main_music_player.volume_linear = 0
+		SoundManager.play_sound(sfx)
 
 func stop_song() -> void:
 	main_music_player.stop()
