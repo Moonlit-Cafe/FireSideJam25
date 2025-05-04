@@ -7,6 +7,6 @@ script = ExtResource("1_ko4w1")
 ref_name = &"Watermelon"
 item_id = 3
 item_description = ""
-respawn_time = Vector2i(0, 0)
+respawn_time = Vector2i(30, 0)
 item_value = 0
 metadata/_custom_type_script = "uid://nm4bl7efbgm0"

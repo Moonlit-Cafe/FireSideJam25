@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://bc0ppgmub4jdq"]
+
+[ext_resource type="Script" uid="uid://c66mmd7np42id" path="res://scenes/entity/items/interactable_item.gd" id="1_6giju"]
+[ext_resource type="Resource" uid="uid://t3g65mbldp6p" path="res://gameplay/crafting/ingredient/breezeberry.tres" id="2_xcgo1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uirgf"]
+size = Vector2(32, 32)
+
+[node name="InteractableItem" type="StaticBody2D"]
+collision_layer = 2
+script = ExtResource("1_6giju")
+item_type = ExtResource("2_xcgo1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_uirgf")

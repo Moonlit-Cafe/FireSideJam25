@@ -1,0 +1,89 @@
+[gd_scene load_steps=14 format=3 uid="uid://cvq41kwc482f7"]
+
+[ext_resource type="Script" uid="uid://c66mmd7np42id" path="res://scenes/entity/items/interactable_item.gd" id="1_q5lag"]
+[ext_resource type="Resource" uid="uid://t3g65mbldp6p" path="res://gameplay/crafting/ingredient/breezeberry.tres" id="2_46k02"]
+[ext_resource type="Texture2D" uid="uid://7nj1t52ctypp" path="res://assets/images/sprites/foliage/breeze-berry-bush.png" id="3_5x445"]
+[ext_resource type="Texture2D" uid="uid://2387krc7qwn" path="res://assets/images/sprites/fruit/breezeberry-small.png" id="4_ag8la"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jmvqf"]
+atlas = ExtResource("4_ag8la")
+region = Rect2(0, 0, 91, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d7exm"]
+atlas = ExtResource("4_ag8la")
+region = Rect2(91, 0, 91, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ch8lc"]
+atlas = ExtResource("4_ag8la")
+region = Rect2(182, 0, 91, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_laga4"]
+atlas = ExtResource("4_ag8la")
+region = Rect2(273, 0, 91, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dcnal"]
+atlas = ExtResource("4_ag8la")
+region = Rect2(364, 0, 91, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3q5tp"]
+atlas = ExtResource("4_ag8la")
+region = Rect2(455, 0, 91, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xp6d8"]
+atlas = ExtResource("4_ag8la")
+region = Rect2(546, 0, 91, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_44rsw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jmvqf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d7exm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ch8lc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_laga4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dcnal")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3q5tp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xp6d8")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uirgf"]
+size = Vector2(32, 32)
+
+[node name="InteractableItem" type="StaticBody2D" node_paths=PackedStringArray("sprites_to_hide")]
+collision_layer = 2
+script = ExtResource("1_q5lag")
+item_type = ExtResource("2_46k02")
+sprites_to_hide = [NodePath("Berry"), NodePath("Berry2")]
+interact_type = 1
+
+[node name="Bush" type="Sprite2D" parent="."]
+texture = ExtResource("3_5x445")
+
+[node name="Berry" type="AnimatedSprite2D" parent="."]
+position = Vector2(-13, 3)
+sprite_frames = SubResource("SpriteFrames_44rsw")
+frame_progress = 0.434621
+
+[node name="Berry2" type="AnimatedSprite2D" parent="."]
+position = Vector2(-23, 1)
+sprite_frames = SubResource("SpriteFrames_44rsw")
+frame_progress = 0.881018
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_uirgf")

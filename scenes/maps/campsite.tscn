@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=4 uid="uid://bfwg2611momlg"]
+[gd_scene load_steps=9 format=4 uid="uid://bfwg2611momlg"]
 
 [ext_resource type="TileSet" uid="uid://ont3d4pvxurd" path="res://assets/images/wave_tiles/new_wave_tile_set.tres" id="1_mjuae"]
 [ext_resource type="PackedScene" uid="uid://da0wcwl7metb" path="res://scenes/components/telenode.tscn" id="2_p8b62"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://h1uqmbwvxxwh" path="res://scenes/entity/crafting_tables/cook_pot.tscn" id="5_f2y84"]
 [ext_resource type="PackedScene" uid="uid://b4r8u2vltrx2x" path="res://ui/task_board.tscn" id="6_jupwr"]
 [ext_resource type="PackedScene" uid="uid://1pplnolh2r4" path="res://scenes/entity/job_board/job_board.tscn" id="6_or1h8"]
+[ext_resource type="PackedScene" uid="uid://cvq41kwc482f7" path="res://scenes/entity/items/breeze_berry.tscn" id="8_onaa4"]
 
 [node name="Campsite" type="Node2D"]
 
@@ -30,3 +31,6 @@ interact_type = 2
 
 [node name="TaskBoard" parent="." instance=ExtResource("6_jupwr")]
 visible = false
+
+[node name="InteractableItem" parent="." instance=ExtResource("8_onaa4")]
+position = Vector2(-68, 54)

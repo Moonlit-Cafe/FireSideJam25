@@ -110,7 +110,7 @@ class_name LevelGenerator extends Node2D
 @export var main : TileMapLayer
 @export var deco : TileMapLayer
 @export var wfc_generator : WFC2DGenerator
-@export var collectable_ref : PackedScene
+@export var collectable_ref : Array[PackedScene]
 @export var collectable_holder : Node
 
 # TODO: Find a better way of utilizing these, may just reduce to 2.
@@ -167,8 +167,10 @@ func _add_collectables() -> void:
 	# also need to make each new collectable item.
 	for x in range(wfc_generator.rect.size.x):
 		for y in range(wfc_generator.rect.size.y):
-			if deco.get_cell_tile_data(Vector2i(x, y)):
-				var collectable : InteractableTile = collectable_ref.instantiate()
+			if deco.get_cell_tile_data(Vector2i(x, y)) and collectable_ref.size() > 0:
+				var idx := GameGlobal.rng.randi_range(0, collectable_ref.size() - 1)
+				print(idx)
+				var collectable : InteractableItem = collectable_ref.get(idx).instantiate()
 				collectable_holder.add_child(collectable)
 				collectable.global_position = to_global(deco.map_to_local(Vector2i(x, y)))
 

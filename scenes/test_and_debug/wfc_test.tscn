@@ -1,10 +1,11 @@
-[gd_scene load_steps=16 format=4 uid="uid://tn8wnpcsxrq5"]
+[gd_scene load_steps=17 format=4 uid="uid://tn8wnpcsxrq5"]
 
 [ext_resource type="Script" uid="uid://b2qqmtfn1c1nh" path="res://scenes/test_and_debug/wfc_test.gd" id="1_1ko8f"]
 [ext_resource type="TileSet" uid="uid://ont3d4pvxurd" path="res://assets/images/wave_tiles/new_wave_tile_set.tres" id="1_t32wb"]
+[ext_resource type="PackedScene" uid="uid://8ncxew5ka20c" path="res://scenes/entity/items/watermelon.tscn" id="2_8akcy"]
 [ext_resource type="Script" uid="uid://do1yu6e6veq7k" path="res://addons/wfc/nodes/layered_map_2d.gd" id="2_al3ws"]
-[ext_resource type="PackedScene" uid="uid://cjakxnhxai5mb" path="res://scenes/entity/items/interactable_item.tscn" id="2_rxpyj"]
 [ext_resource type="Script" uid="uid://cnwagyi7q0qi2" path="res://addons/wfc/problems/2d/mappers/mapper_2d_factory.gd" id="3_0bq1e"]
+[ext_resource type="PackedScene" uid="uid://cvq41kwc482f7" path="res://scenes/entity/items/breeze_berry.tscn" id="3_3ncsk"]
 [ext_resource type="Script" uid="uid://chytbcpxjkn5o" path="res://addons/wfc/nodes/generator_2d.gd" id="3_al3ws"]
 [ext_resource type="Script" uid="uid://bcxfurx8miujl" path="res://scenes/test_and_debug/progress_indicator.gd" id="5_1ko8f"]
 [ext_resource type="Script" uid="uid://cvxdtmbhre6ly" path="res://addons/wfc/solver/solver_settings.gd" id="7_5k1we"]
@@ -42,7 +43,7 @@ script = ExtResource("1_1ko8f")
 main = NodePath("target/main")
 deco = NodePath("target/decorations")
 wfc_generator = NodePath("WFC2DGenerator")
-collectable_ref = ExtResource("2_rxpyj")
+collectable_ref = Array[PackedScene]([ExtResource("2_8akcy"), ExtResource("3_3ncsk")])
 collectable_holder = NodePath("CollectableHolder")
 
 [node name="sample" type="Node" parent="."]

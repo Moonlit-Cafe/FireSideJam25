@@ -16,6 +16,7 @@ map_gen = NodePath("WfcTest")
 player = NodePath("Player")
 
 [node name="WfcTest" parent="." instance=ExtResource("9_3ja2f")]
+collectable_ref = Array[PackedScene]([])
 
 [node name="Player" parent="." instance=ExtResource("1_hshav")]
 z_index = 10
