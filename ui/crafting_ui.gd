@@ -7,6 +7,8 @@ extends CanvasLayer
 @export var content : Control
 @export var animated_texture : AnimatedTextureRect
 
+var previous_song : StringName = &""
+
 func _ready() -> void:
 	add_to_group(&"ui")
 	
@@ -16,11 +18,14 @@ func _ready() -> void:
 		_animate_content()
 
 func open_craft_menu() -> void:
+	previous_song = MusicManager.current_song
+	MusicManager.play_song(&"craft", true)
 	animated_texture.current_animation = &"open"
 	animated_texture.play()
 	show()
 
 func close_craft_menu() -> void:
+	MusicManager.play_song(previous_song, true)
 	animated_texture.current_animation = &"close"
 	animated_texture.play()
 	content.hide()

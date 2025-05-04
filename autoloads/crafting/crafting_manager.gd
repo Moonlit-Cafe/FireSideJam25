@@ -24,6 +24,7 @@ func craft(ing_1: StringName, ing_2: StringName) -> void:
 				InventoryManager.remove_item(ing_1)
 				InventoryManager.remove_item(ing_2)
 				InventoryManager.add_item(recipe.item_result_bottle.ref_name)
+				MusicManager.play_jingle(&"newItem")
 	else:
 		push_warning("The player does not have these items.")
 	

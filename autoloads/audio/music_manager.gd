@@ -57,14 +57,14 @@ func _crossover(song_name: StringName, sfx_crossover := false) -> void:
 	crossfade = true
 	if !sfx_crossover:
 		# Setup new song on secondary
-		secondary_music_player.stream = song_pool.get(song_name)
+		secondary_music_player.stream = song_pool.get(song_name).get(0)
 		secondary_music_player.volume_linear = 0
 		secondary_music_player.play()
 		
 		# Create the crossover tween
 		var tween = get_tree().create_tween().bind_node(self).set_trans(Tween.TRANS_SINE)
-		tween.tween_property(main_music_player, "volume_linear", 0, 5.0)
-		tween.parallel().tween_property(secondary_music_player, "volume_linear", 1, 5.0)
+		tween.tween_property(main_music_player, "volume_linear", 0, 1.0)
+		tween.parallel().tween_property(secondary_music_player, "volume_linear", 1, 1.0)
 		tween.tween_callback(func(): tween.kill)
 		
 		await tween.finished
@@ -79,8 +79,8 @@ func _crossover(song_name: StringName, sfx_crossover := false) -> void:
 		# fade our main track, play our SFX, then fade back in
 		var tween = get_tree().create_tween().bind_node(self).set_trans(Tween.TRANS_SINE)
 		tween.tween_property(main_music_player, "volume_linear", 0, 5.0)
-		SoundManager.play_sound(song_name)
 		await tween.finished
+		SoundManager.play_sound(song_name)
 		tween.tween_property(main_music_player, "volume_linear", 1, 5.0)
 		await tween.finished
 	

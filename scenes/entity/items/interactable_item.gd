@@ -8,6 +8,9 @@ var picked_time := Vector2i.ZERO
 
 func _ready() -> void:
 	GameGlobalEvents.check_item_respawn.connect(_on_item_check_respawn)
+	
+	for sprite in sprites_to_hide:
+		sprite.play(&"default")
 
 func interaction_event() -> void:
 	if item_type and not picked:

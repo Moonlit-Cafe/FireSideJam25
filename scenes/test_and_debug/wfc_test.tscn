@@ -1,13 +1,17 @@
-[gd_scene load_steps=15 format=4 uid="uid://tn8wnpcsxrq5"]
+[gd_scene load_steps=19 format=4 uid="uid://tn8wnpcsxrq5"]
 
 [ext_resource type="Script" uid="uid://b2qqmtfn1c1nh" path="res://scenes/test_and_debug/wfc_test.gd" id="1_1ko8f"]
 [ext_resource type="TileSet" uid="uid://ont3d4pvxurd" path="res://assets/images/wave_tiles/new_wave_tile_set.tres" id="1_t32wb"]
 [ext_resource type="PackedScene" uid="uid://8ncxew5ka20c" path="res://scenes/entity/items/watermelon.tscn" id="2_8akcy"]
 [ext_resource type="Script" uid="uid://do1yu6e6veq7k" path="res://addons/wfc/nodes/layered_map_2d.gd" id="2_al3ws"]
+[ext_resource type="PackedScene" uid="uid://bc0ppgmub4jdq" path="res://scenes/entity/items/dawn_apple.tscn" id="2_q7hg2"]
 [ext_resource type="Script" uid="uid://cnwagyi7q0qi2" path="res://addons/wfc/problems/2d/mappers/mapper_2d_factory.gd" id="3_0bq1e"]
 [ext_resource type="PackedScene" uid="uid://cvq41kwc482f7" path="res://scenes/entity/items/breeze_berry.tscn" id="3_3ncsk"]
 [ext_resource type="Script" uid="uid://chytbcpxjkn5o" path="res://addons/wfc/nodes/generator_2d.gd" id="3_al3ws"]
+[ext_resource type="PackedScene" uid="uid://dxd6cbx2y882x" path="res://scenes/entity/items/dusgrapes.tscn" id="3_qck4w"]
 [ext_resource type="Script" uid="uid://bcxfurx8miujl" path="res://scenes/test_and_debug/progress_indicator.gd" id="5_1ko8f"]
+[ext_resource type="PackedScene" uid="uid://gcd7ph0qw7a1" path="res://scenes/entity/items/geotato.tscn" id="5_qxjoh"]
+[ext_resource type="PackedScene" uid="uid://cs6i12j5hs1no" path="res://scenes/entity/items/florange.tscn" id="6_4pf4r"]
 [ext_resource type="Script" uid="uid://d30pmyvkhffcc" path="res://addons/wfc/runners/runner_multithreaded_settings.gd" id="7_tky42"]
 
 [sub_resource type="Resource" id="Resource_an7pg"]
@@ -32,7 +36,10 @@ script = ExtResource("1_1ko8f")
 main = NodePath("target/main")
 deco = NodePath("target/decorations")
 wfc_generator = NodePath("WFC2DGenerator")
-collectable_ref = Array[PackedScene]([ExtResource("2_8akcy"), ExtResource("3_3ncsk")])
+grass_collectables = Array[PackedScene]([ExtResource("2_q7hg2"), ExtResource("3_qck4w")])
+windgrass_collectables = Array[PackedScene]([ExtResource("3_3ncsk"), ExtResource("5_qxjoh")])
+firegrass_collectables = Array[PackedScene]([ExtResource("6_4pf4r")])
+water_collectables = Array[PackedScene]([ExtResource("2_8akcy")])
 collectable_holder = NodePath("CollectableHolder")
 
 [node name="sample" type="Node" parent="."]

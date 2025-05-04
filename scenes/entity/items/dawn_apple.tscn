@@ -1,15 +1,44 @@
-[gd_scene load_steps=4 format=3 uid="uid://bc0ppgmub4jdq"]
+[gd_scene load_steps=8 format=3 uid="uid://bc0ppgmub4jdq"]
 
 [ext_resource type="Script" uid="uid://c66mmd7np42id" path="res://scenes/entity/items/interactable_item.gd" id="1_6giju"]
 [ext_resource type="Resource" uid="uid://t3g65mbldp6p" path="res://gameplay/crafting/ingredient/breezeberry.tres" id="2_xcgo1"]
+[ext_resource type="Texture2D" uid="uid://cao6b3jv0ab7f" path="res://assets/images/sprites/foliage/dawn-apple-tree.png" id="3_6giju"]
+[ext_resource type="Texture2D" uid="uid://bqmdvgur1u0wc" path="res://assets/images/sprites/fruit/dawn-apple-small.png" id="4_xcgo1"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x8ccj"]
+atlas = ExtResource("4_xcgo1")
+region = Rect2(0, 0, 7, 8)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ahxqc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x8ccj")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uirgf"]
 size = Vector2(32, 32)
 
-[node name="InteractableItem" type="StaticBody2D"]
+[node name="DawnApple" type="StaticBody2D" node_paths=PackedStringArray("sprites_to_hide")]
 collision_layer = 2
 script = ExtResource("1_6giju")
 item_type = ExtResource("2_xcgo1")
+sprites_to_hide = [NodePath("Apple"), NodePath("Apple2")]
+
+[node name="Tree" type="Sprite2D" parent="."]
+texture = ExtResource("3_6giju")
+
+[node name="Apple" type="AnimatedSprite2D" parent="."]
+position = Vector2(6, -7)
+sprite_frames = SubResource("SpriteFrames_ahxqc")
+
+[node name="Apple2" type="AnimatedSprite2D" parent="."]
+position = Vector2(-5, -5)
+sprite_frames = SubResource("SpriteFrames_ahxqc")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_uirgf")
