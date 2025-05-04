@@ -1,6 +1,7 @@
 [gd_resource type="AudioBusLayout" format=3 uid="uid://boaje650mj0h2"]
 
 [resource]
+bus/0/volume_db = -17.0282
 bus/1/name = &"OST"
 bus/1/solo = false
 bus/1/mute = false

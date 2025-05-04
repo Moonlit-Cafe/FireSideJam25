@@ -7,6 +7,7 @@ class_name LevelGenerator extends Node2D
 @export var windgrass_collectables : Array[PackedScene]
 @export var firegrass_collectables : Array[PackedScene]
 @export var water_collectables : Array[PackedScene]
+@export var stitch_generator : WFC2DGenerator
 @export var collectable_holder : Node
 
 # TODO: Find a better way of utilizing these, may just reduce to 2.
@@ -60,6 +61,8 @@ func _generate_biomes() -> void:
 	
 	wfc_generator.start()
 	await wfc_generator.done
+	#stitch_generator.start()
+	#await stitch_generator.done
 	_add_collectables()
 
 func _define_noise(noise: FastNoiseLite) -> void:
@@ -90,8 +93,9 @@ func _add_collectables() -> void:
 					idx = GameGlobal.rng.randi_range(0, windgrass_collectables.size() - 1)
 					collectable = windgrass_collectables.get(idx).instantiate()
 				
-				collectable_holder.add_child(collectable)
-				collectable.global_position = to_global(deco.map_to_local(Vector2i(x, y)))
+				if biome != 1 :
+					collectable_holder.add_child(collectable)
+					collectable.global_position = to_global(deco.map_to_local(Vector2i(x, y)))
 
 func _place_biome_tile(l_noise: float, h_noise: float, w_noise: float, pos: Vector2i) -> void:
 	# Grass Placement
@@ -108,8 +112,7 @@ func _check_biome_allow(cell_value: float, value: float, delta: float) -> bool:
 	return (value - delta < cell_value) and (cell_value < value + delta)
 
 func _check_cell_allow(pos: Vector2i, terrain_id: int) -> bool:
-	var can_place := true
-	
+	var can_place := true	
 	for area in check_area:
 		var checked_tile = main.get_cell_tile_data(pos + area)
 		if checked_tile:

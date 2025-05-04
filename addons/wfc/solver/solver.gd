@@ -183,7 +183,7 @@ func _propagete_constraints_ac4() -> bool:
 					if dependent_domain.is_empty():
 						if backtracking_enabled:
 							return true
-						assert(false) # TO DO: Handle contradiction in non-backtracking mode
+						#assert(false) # TO DO: Handle contradiction in non-backtracking mode
 
 					state.set_domain(dependent_cell, dependent_domain)
 
