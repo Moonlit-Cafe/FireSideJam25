@@ -5,6 +5,7 @@ var song_pool : Dictionary[StringName, Array]
 var main_music_player : AudioStreamPlayer
 var secondary_music_player : AudioStreamPlayer
 var current_song : StringName
+var crossfade := false
 #endregion
 
 #region Setup
@@ -13,7 +14,7 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	if current_song != &"":
-		if song_pool.get(current_song).get(1) != -1:
+		if song_pool.get(current_song).get(1) != -1 and not crossfade:
 			var current_pos = main_music_player.get_playback_position()
 			if current_pos >= song_pool.get(current_song).get(1):
 				main_music_player.seek(0)
@@ -52,7 +53,8 @@ func play_song(song_name: StringName, crossover: bool = false) -> void:
 		main_music_player.stream = song_pool.get(song_name).get(0)
 		main_music_player.play()
 
-func _crossover(song_name:StringName,sfx_crossover:=false) -> void:
+func _crossover(song_name: StringName, sfx_crossover := false) -> void:
+	crossfade = true
 	if !sfx_crossover:
 		# Setup new song on secondary
 		secondary_music_player.stream = song_pool.get(song_name)
@@ -81,11 +83,13 @@ func _crossover(song_name:StringName,sfx_crossover:=false) -> void:
 		await tween.finished
 		tween.tween_property(main_music_player, "volume_linear", 1, 5.0)
 		await tween.finished
+	
+	crossfade = false
 
 func play_jingle(sfx: StringName) -> void:
 	# TODO: Need to crossfade with an ost to do the "jingle" that Yuvi needs
 	if main_music_player.playing:
-		_crossover(sfx,true)
+		_crossover(sfx, true)
 	else : SoundManager.play_sound(sfx)
 
 func stop_song() -> void:

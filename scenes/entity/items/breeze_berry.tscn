@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" uid="uid://c66mmd7np42id" path="res://scenes/entity/items/interactable_item.gd" id="1_q5lag"]
 [ext_resource type="Resource" uid="uid://t3g65mbldp6p" path="res://gameplay/crafting/ingredient/breezeberry.tres" id="2_46k02"]
-[ext_resource type="Texture2D" uid="uid://7nj1t52ctypp" path="res://assets/images/sprites/foliage/breeze-berry-bush.png" id="3_5x445"]
-[ext_resource type="Texture2D" uid="uid://2387krc7qwn" path="res://assets/images/sprites/fruit/breezeberry-small.png" id="4_ag8la"]
+[ext_resource type="Texture2D" uid="uid://bwtup3ifyfy1s" path="res://assets/images/sprites/foliage/breeze-berry-bush.png" id="3_5x445"]
+[ext_resource type="Texture2D" uid="uid://cvjahqlvsb6lo" path="res://assets/images/sprites/fruit/breezeberry-small.png" id="4_ag8la"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jmvqf"]
 atlas = ExtResource("4_ag8la")

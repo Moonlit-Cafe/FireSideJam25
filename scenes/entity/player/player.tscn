@@ -224,7 +224,6 @@ anim_tree = NodePath("AnimationTree")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_njr5w")
 hframes = 16
-frame = 4
 
 [node name="Interaction" type="CanvasLayer" parent="."]
 
