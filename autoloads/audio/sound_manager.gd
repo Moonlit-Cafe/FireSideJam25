@@ -88,5 +88,6 @@ func find_open_player(bus: Genum.BusID) -> AudioStreamPlayer:
 			return player
 	
 	push_warning("There is no open player...")
-	return null 
+	return null
+
 #endregion

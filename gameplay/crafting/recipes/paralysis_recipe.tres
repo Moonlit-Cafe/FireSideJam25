@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="RecipeResource" load_steps=5 format=3 uid="uid://cu7dpbvnqqgwc"]
+
+[ext_resource type="Resource" uid="uid://b6k50wgph8o2o" path="res://gameplay/crafting/ingredient/zanana.tres" id="1_6et6h"]
+[ext_resource type="Script" uid="uid://cvojyriksvfr0" path="res://gameplay/crafting/recipe_resource.gd" id="1_dx3yx"]
+[ext_resource type="Resource" uid="uid://d36o1xjnx62bj" path="res://gameplay/crafting/ingredient/florange.tres" id="2_68v50"]
+[ext_resource type="Resource" uid="uid://davuuml5d44cy" path="res://gameplay/crafting/bottles/paralysis.tres" id="3_815q6"]
+
+[resource]
+script = ExtResource("1_dx3yx")
+item_result_bottle = ExtResource("3_815q6")
+item_ingredient_1 = ExtResource("1_6et6h")
+item_ingredient_2 = ExtResource("2_68v50")
+metadata/_custom_type_script = "uid://cvojyriksvfr0"

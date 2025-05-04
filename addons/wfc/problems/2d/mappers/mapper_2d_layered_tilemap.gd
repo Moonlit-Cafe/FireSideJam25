@@ -119,7 +119,7 @@ func read_tile_meta(tile: int, meta_name: String) -> Array:
 			var td := (source as TileSetAtlasSource).get_tile_data(Vector2i(attrs.y, attrs.z), attrs.w)
 			result.append(td.get_custom_data_by_layer_id(data_layer))
 		elif source is TileSetScenesCollectionSource:
-			pass # TODO
+			pass # TO DO
 
 	return result
 
@@ -137,7 +137,7 @@ func _read_builtin_probabilities(tile: int) -> float:
 			var td: TileData = source.get_tile_data(Vector2i(attrs.y, attrs.z), attrs.w)
 			probability *= td.probability
 		elif source is TileSetScenesCollectionSource:
-			pass # TODO
+			pass # TO DO
 
 	return probability
 

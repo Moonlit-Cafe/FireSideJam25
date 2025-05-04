@@ -1,0 +1,35 @@
+[gd_scene load_steps=7 format=3 uid="uid://gcd7ph0qw7a1"]
+
+[ext_resource type="Script" uid="uid://c66mmd7np42id" path="res://scenes/entity/items/interactable_item.gd" id="1_8f5rs"]
+[ext_resource type="Resource" uid="uid://cdr48ighyod3a" path="res://gameplay/crafting/ingredient/geotato.tres" id="2_tok3w"]
+[ext_resource type="Texture2D" uid="uid://c7ax7ycdg0qkl" path="res://assets/images/sprites/foliage/Geotato-plant.png" id="3_tok3w"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_myj8w"]
+atlas = ExtResource("3_tok3w")
+region = Rect2(0, 0, 29, 33)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_sdoc6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_myj8w")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uirgf"]
+size = Vector2(32, 32)
+
+[node name="InteractableItem" type="StaticBody2D" node_paths=PackedStringArray("sprites_to_hide")]
+collision_layer = 2
+script = ExtResource("1_8f5rs")
+item_type = ExtResource("2_tok3w")
+sprites_to_hide = [NodePath("Plant")]
+
+[node name="Plant" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_sdoc6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_uirgf")

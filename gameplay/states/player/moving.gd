@@ -1,8 +1,22 @@
 extends PlayerState
 
+@export var walk_timer : Timer
+
 var dir := Vector2.ZERO
 var p_dir := Vector2.ZERO
 var player : Player
+var can_walk_sound := true
+var walk_delta : float = 0.5
+var walk_sound_array : Array[StringName] = [
+	&"step1", &"step2", &"step3", &"step4",
+	&"step5", &"step6", &"step7", &"step8",
+	&"step9", &"step10", &"step11",
+]
+
+func _ready() -> void:
+	walk_timer.timeout.connect(_on_walk_timeout)
+	walk_timer.start(walk_delta)
+	can_walk_sound = true
 
 func enter(previous_state : StringName, data := {}) -> void:
 	player = owner
@@ -28,3 +42,12 @@ func animate() -> void:
 func move() -> void:
 	player.velocity = dir * player.SPEED
 	player.move_and_slide()
+	
+	if can_walk_sound:
+		print("Playing sound")
+		SoundManager.play_sound(walk_sound_array.get(randi_range(0, walk_sound_array.size() - 1)))
+		walk_timer.start(walk_delta)
+		can_walk_sound = false
+
+func _on_walk_timeout() -> void:
+	can_walk_sound = true

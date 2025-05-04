@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="RecipeResource" load_steps=5 format=3 uid="uid://c3vaxu0yb8bx0"]
+
+[ext_resource type="Script" uid="uid://cvojyriksvfr0" path="res://gameplay/crafting/recipe_resource.gd" id="1_70e6x"]
+[ext_resource type="Resource" uid="uid://cdr48ighyod3a" path="res://gameplay/crafting/ingredient/geotato.tres" id="1_wqbjh"]
+[ext_resource type="Resource" uid="uid://d36o1xjnx62bj" path="res://gameplay/crafting/ingredient/florange.tres" id="2_tvqmv"]
+[ext_resource type="Resource" uid="uid://cnw8j0y78ve6n" path="res://gameplay/crafting/bottles/slow.tres" id="3_2l4ad"]
+
+[resource]
+script = ExtResource("1_70e6x")
+item_result_bottle = ExtResource("3_2l4ad")
+item_ingredient_1 = ExtResource("1_wqbjh")
+item_ingredient_2 = ExtResource("2_tvqmv")
+metadata/_custom_type_script = "uid://cvojyriksvfr0"

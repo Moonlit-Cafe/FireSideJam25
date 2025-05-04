@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="RecipeResource" load_steps=5 format=3 uid="uid://bp4ud0jdl4ubk"]
+
+[ext_resource type="Script" uid="uid://cvojyriksvfr0" path="res://gameplay/crafting/recipe_resource.gd" id="1_nolx1"]
+[ext_resource type="Resource" uid="uid://th8r0rx5u1tg" path="res://gameplay/crafting/ingredient/dusgrapes.tres" id="1_yxa24"]
+[ext_resource type="Resource" uid="uid://cu6uq2ejbuc2t" path="res://gameplay/crafting/ingredient/watermelon.tres" id="2_5ty4u"]
+[ext_resource type="Resource" uid="uid://tikmxbfwj84b" path="res://gameplay/crafting/bottles/poison.tres" id="3_w5x3a"]
+
+[resource]
+script = ExtResource("1_nolx1")
+item_result_bottle = ExtResource("3_w5x3a")
+item_ingredient_1 = ExtResource("1_yxa24")
+item_ingredient_2 = ExtResource("2_5ty4u")
+metadata/_custom_type_script = "uid://cvojyriksvfr0"

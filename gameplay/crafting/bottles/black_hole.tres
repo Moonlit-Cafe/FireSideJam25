@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="BottleResource" load_steps=2 format=3 uid="uid://cui5ysvx7r8fr"]
+
+[ext_resource type="Script" uid="uid://dsrgaj2m41yk7" path="res://gameplay/crafting/bottle_resource.gd" id="1_gvr4u"]
+
+[resource]
+script = ExtResource("1_gvr4u")
+ref_name = &"Black Hole"
+bottle_description = ""
+bottle_value = 0
+metadata/_custom_type_script = "uid://dsrgaj2m41yk7"

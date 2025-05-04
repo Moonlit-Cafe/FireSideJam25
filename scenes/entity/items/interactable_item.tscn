@@ -6,11 +6,10 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uirgf"]
 size = Vector2(32, 32)
 
-[node name="InteractableItem" type="StaticBody2D" node_paths=PackedStringArray("sprite")]
+[node name="InteractableItem" type="StaticBody2D"]
 collision_layer = 2
 script = ExtResource("1_uirgf")
 item_type = ExtResource("2_ci7m6")
-sprite = NodePath("")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_uirgf")

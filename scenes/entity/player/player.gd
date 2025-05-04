@@ -1,6 +1,6 @@
 class_name Player extends CharacterBody2D
 
-const SPEED : int = 8 * 16
+const SPEED : int = 4 * 16
 
 @export var anim_tree : AnimationTree
 

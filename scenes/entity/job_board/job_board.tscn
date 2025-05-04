@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://1pplnolh2r4"]
+
+[ext_resource type="Script" uid="uid://cgl5rdwtahtrj" path="res://scenes/entity/job_board/job_board.gd" id="1_8oii7"]
+[ext_resource type="Texture2D" uid="uid://b0kpw5jmf2o3k" path="res://assets/images/sprites/props/job-board.png" id="2_i8hp8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x8lgd"]
+size = Vector2(38, 22)
+
+[node name="JobBoard" type="StaticBody2D"]
+collision_layer = 3
+script = ExtResource("1_8oii7")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_i8hp8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_x8lgd")

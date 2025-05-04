@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="RecipeResource" load_steps=5 format=3 uid="uid://bo0nx63aq4q7a"]
+
+[ext_resource type="Resource" uid="uid://dwjfj3x67dxgc" path="res://gameplay/crafting/ingredient/dawnapple.tres" id="1_6n5x2"]
+[ext_resource type="Script" uid="uid://cvojyriksvfr0" path="res://gameplay/crafting/recipe_resource.gd" id="1_dtfss"]
+[ext_resource type="Resource" uid="uid://d36o1xjnx62bj" path="res://gameplay/crafting/ingredient/florange.tres" id="2_c1vs2"]
+[ext_resource type="Resource" uid="uid://dbo6xcid3pw2p" path="res://gameplay/crafting/bottles/cleanse.tres" id="3_vf7fc"]
+
+[resource]
+script = ExtResource("1_dtfss")
+item_result_bottle = ExtResource("3_vf7fc")
+item_ingredient_1 = ExtResource("1_6n5x2")
+item_ingredient_2 = ExtResource("2_c1vs2")
+metadata/_custom_type_script = "uid://cvojyriksvfr0"

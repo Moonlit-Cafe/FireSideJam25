@@ -1,12 +1,14 @@
 extends Node
 
+# TODO: Define all resources in detail bottle, recipe, ingredient
+
 #region Children
 var day_timer : Timer
 #endregion
 
 #region Global Variables
-var time_of_day : int = 0
-var days : int = 0
+var time_of_day : int = 60 * 6
+var days : int = 1
 var rng := RandomNumberGenerator.new()
 #endregion
 

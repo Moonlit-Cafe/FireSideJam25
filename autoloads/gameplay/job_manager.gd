@@ -2,6 +2,8 @@ extends Node
 
 signal job_selected
 
+# TODO: Need to show selected jobs somewhere
+
 var selected_jobs : Array[TaskRequest]
 var max_selectable_jobs : int = 3
 var available_jobs : Array[TaskRequest]
@@ -9,6 +11,8 @@ var max_job_count : int = 5
 var min_job_count : int = 3
 
 func _ready() -> void:
+	_on_week_changed()
+	
 	GameGlobalEvents.weekly_check.connect(_on_week_changed)
 
 func select_job(job: TaskRequest) -> void:

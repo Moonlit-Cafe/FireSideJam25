@@ -1,113 +1,12 @@
-[gd_resource type="Resource" script_class="IngredientResource" load_steps=17 format=3 uid="uid://cu6uq2ejbuc2t"]
+[gd_resource type="Resource" script_class="IngredientResource" load_steps=2 format=3 uid="uid://cu6uq2ejbuc2t"]
 
-[ext_resource type="Texture2D" uid="uid://bbldicxsi3k56" path="res://assets/images/sprites/fruit/watermelon-small.png" id="1_awwpp"]
 [ext_resource type="Script" uid="uid://nm4bl7efbgm0" path="res://gameplay/crafting/ingredient_resource.gd" id="1_ko4w1"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_6pkal"]
-atlas = ExtResource("1_awwpp")
-region = Rect2(0, 0, 16, 15)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ieqsx"]
-atlas = ExtResource("1_awwpp")
-region = Rect2(16, 0, 16, 15)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_dqmvc"]
-atlas = ExtResource("1_awwpp")
-region = Rect2(32, 0, 16, 15)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_kuicg"]
-atlas = ExtResource("1_awwpp")
-region = Rect2(48, 0, 16, 15)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_hijgv"]
-atlas = ExtResource("1_awwpp")
-region = Rect2(64, 0, 16, 15)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_j6sv2"]
-atlas = ExtResource("1_awwpp")
-region = Rect2(80, 0, 16, 15)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ujbbg"]
-atlas = ExtResource("1_awwpp")
-region = Rect2(96, 0, 16, 15)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ebmff"]
-atlas = ExtResource("1_awwpp")
-region = Rect2(112, 0, 16, 15)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_k7p06"]
-atlas = ExtResource("1_awwpp")
-region = Rect2(128, 0, 16, 15)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_rn26x"]
-atlas = ExtResource("1_awwpp")
-region = Rect2(144, 0, 16, 15)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_otfm2"]
-atlas = ExtResource("1_awwpp")
-region = Rect2(160, 0, 16, 15)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ykuv7"]
-atlas = ExtResource("1_awwpp")
-region = Rect2(176, 0, 16, 15)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_mdttp"]
-atlas = ExtResource("1_awwpp")
-region = Rect2(192, 0, 16, 15)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_k7i6y"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_6pkal")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ieqsx")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_dqmvc")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_kuicg")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_hijgv")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_j6sv2")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ujbbg")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ebmff")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_k7p06")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_rn26x")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_otfm2")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ykuv7")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_mdttp")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
 
 [resource]
 script = ExtResource("1_ko4w1")
 ref_name = &"Watermelon"
 item_id = 3
 item_description = ""
-item_tile_sprite = SubResource("SpriteFrames_k7i6y")
-respawn_time = Vector2i(0, 0)
+respawn_time = Vector2i(30, 0)
 item_value = 0
 metadata/_custom_type_script = "uid://nm4bl7efbgm0"

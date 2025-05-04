@@ -25,6 +25,7 @@ MusicManager="*res://autoloads/audio/music_manager.gd"
 SoundManager="*res://autoloads/audio/sound_manager.gd"
 CraftingManager="*res://autoloads/crafting/crafting_manager.gd"
 InventoryManager="*res://autoloads/crafting/inventory_manager.gd"
+JobManager="*res://autoloads/gameplay/job_manager.gd"
 
 [display]
 

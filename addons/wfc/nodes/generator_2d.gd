@@ -216,7 +216,7 @@ func start():
 
 	started.emit()
 
-	# TODO: Call this in separate thread if long-running generators will be used to generate preconditions
+	# To Do: Call this in separate thread if long-running generators will be used to generate preconditions
 	precondition.prepare()
 
 	var problem: WFC2DProblem = _create_problem(problem_settings, target_node, precondition)
