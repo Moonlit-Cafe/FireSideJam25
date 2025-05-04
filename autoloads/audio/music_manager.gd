@@ -47,37 +47,46 @@ func play_song(song_name: StringName, crossover: bool = false) -> void:
 	
 	current_song = song_name
 	if crossover:
-		if main_music_player.playing:
-			# Setup new song on secondary
-			print(song_name)
-			secondary_music_player.stream = song_pool.get(song_name).get(0)
-			secondary_music_player.volume_linear = 0
-			secondary_music_player.play()
-			
-			# Create the crossover tween
-			var tween = get_tree().create_tween().bind_node(self).set_trans(Tween.TRANS_SINE)
-			tween.tween_property(main_music_player, "volume_linear", 0, 5.0)
-			tween.parallel().tween_property(secondary_music_player, "volume_linear", 1, 5.0)
-			tween.tween_callback(func(): tween.kill)
-			
-			await tween.finished
-			# Move from secondary to main
-			main_music_player.stream = secondary_music_player.stream
-			main_music_player.volume_linear = 1
-			secondary_music_player.volume_linear = 0
-			main_music_player.play(secondary_music_player.get_playback_position())
-			secondary_music_player.stop()
-			secondary_music_player.stream = null
+		_crossover(song_name)
 	else:
 		main_music_player.stream = song_pool.get(song_name).get(0)
 		main_music_player.play()
 
+func _crossover(song_name:StringName,sfx_crossover:=false) -> void:
+	if !sfx_crossover:
+		# Setup new song on secondary
+		secondary_music_player.stream = song_pool.get(song_name)
+		secondary_music_player.volume_linear = 0
+		secondary_music_player.play()
+		
+		# Create the crossover tween
+		var tween = get_tree().create_tween().bind_node(self).set_trans(Tween.TRANS_SINE)
+		tween.tween_property(main_music_player, "volume_linear", 0, 5.0)
+		tween.parallel().tween_property(secondary_music_player, "volume_linear", 1, 5.0)
+		tween.tween_callback(func(): tween.kill)
+		
+		await tween.finished
+		# Move from secondary to main
+		main_music_player.stream = secondary_music_player.stream
+		main_music_player.volume_linear = 1
+		secondary_music_player.volume_linear = 0
+		main_music_player.play(secondary_music_player.get_playback_position())
+		secondary_music_player.stop()
+		secondary_music_player.stream = null
+	elif sfx_crossover:
+		# fade our main track, play our SFX, then fade back in
+		var tween = get_tree().create_tween().bind_node(self).set_trans(Tween.TRANS_SINE)
+		tween.tween_property(main_music_player, "volume_linear", 0, 5.0)
+		SoundManager.play_sound(song_name)
+		await tween.finished
+		tween.tween_property(main_music_player, "volume_linear", 1, 5.0)
+		await tween.finished
+
 func play_jingle(sfx: StringName) -> void:
 	# TODO: Need to crossfade with an ost to do the "jingle" that Yuvi needs
 	if main_music_player.playing:
-		var vol = main_music_player.volume_linear
-		main_music_player.volume_linear = 0
-		SoundManager.play_sound(sfx)
+		_crossover(sfx,true)
+	else : SoundManager.play_sound(sfx)
 
 func stop_song() -> void:
 	main_music_player.stop()

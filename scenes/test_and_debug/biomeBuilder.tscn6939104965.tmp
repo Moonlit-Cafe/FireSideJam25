@@ -1,0 +1,88 @@
+[gd_scene load_steps=10 format=4 uid="uid://bykyq4ni1auvj"]
+
+[ext_resource type="Script" uid="uid://c3gmehpf6t8u0" path="res://scenes/test_and_debug/biome_builder.gd" id="1_mb4jk"]
+[ext_resource type="TileSet" uid="uid://ont3d4pvxurd" path="res://assets/images/wave_tiles/new_wave_tile_set.tres" id="1_y6gbv"]
+[ext_resource type="Script" uid="uid://do1yu6e6veq7k" path="res://addons/wfc/nodes/layered_map_2d.gd" id="2_ktfdt"]
+[ext_resource type="Script" uid="uid://cnwagyi7q0qi2" path="res://addons/wfc/problems/2d/mappers/mapper_2d_factory.gd" id="3_g55p4"]
+[ext_resource type="Script" uid="uid://chytbcpxjkn5o" path="res://addons/wfc/nodes/generator_2d.gd" id="5_g55p4"]
+
+[sub_resource type="Resource" id="Resource_3f4fx"]
+script = ExtResource("3_g55p4")
+
+[sub_resource type="Resource" id="Resource_ktfdt"]
+script = ExtResource("3_g55p4")
+
+[sub_resource type="Resource" id="Resource_g55p4"]
+script = ExtResource("3_g55p4")
+
+[sub_resource type="Resource" id="Resource_jqe1a"]
+script = ExtResource("3_g55p4")
+
+[node name="BiomeBuilder" type="Node2D" node_paths=PackedStringArray("over_world")]
+script = ExtResource("1_mb4jk")
+main_biome_size = Vector2i(75, 75)
+wind_grass_biome_loc = Vector2i(25, 25)
+wind_grass_biome_size = Vector2i(16, 16)
+fire_grass_biome_loc = Vector2i(-25, -25)
+fire_grass_biome_size = Vector2i(16, 16)
+water_grass_biome_loc = Vector2i(25, -25)
+water_grass_biome_size = Vector2i(16, 16)
+over_world = NodePath("WFC2DGenerator")
+
+[node name="DirtGrass" type="Node" parent="."]
+script = ExtResource("2_ktfdt")
+mapper_factory = SubResource("Resource_3f4fx")
+metadata/_custom_type_script = "uid://do1yu6e6veq7k"
+
+[node name="Tiles" type="TileMapLayer" parent="DirtGrass"]
+tile_map_data = PackedByteArray("AAAAAAAABwAAAAAAAAAAAAIABwAAAAEAAAAAAAQABwAAAAIAAAAAAAYABwAAAAMAAAACAAAABwABAAAAAAACAAIABwABAAEAAAACAAQABwABAAIAAAACAAYABwABAAMAAAAEAAAABwACAAMAAAAEAAIABwACAAAAAAAEAAQABwACAAEAAAAEAAYABwACAAIAAAAGAAAABwADAAAAAAAGAAIABwADAAEAAAAGAAQABwADAAIAAAAGAAYABwADAAMAAAAIAAAAAAABAAEAAAAKAAAAAAABAAEAAAAKAAIAAAABAAEAAAAKAAQAAAABAAEAAAAKAAYAAAABAAEAAAAKAAgAAAABAAEAAAAKAAoAAAABAAEAAAAMAAAABwACAAEAAAAMAAIABwACAAEAAAAMAAQABwACAAEAAAAMAAYABwACAAEAAAAMAAgABwACAAEAAAAMAAoABwACAAEAAAA=")
+tile_set = ExtResource("1_y6gbv")
+
+[node name="Decorations" type="TileMapLayer" parent="DirtGrass"]
+tile_map_data = PackedByteArray("AAAKAAAAAAAFAAAAAAAKAAIAAAAGAAAAAAAKAAQAAAAHAAAAAAAKAAYAAAAFAAEAAAAKAAgAAAAGAAEAAAAKAAoAAAAHAAEAAAAMAAAAAAAFAAAAAAAMAAIAAAAGAAAAAAAMAAQAAAAHAAAAAAAMAAYAAAAFAAEAAAAMAAgAAAAGAAEAAAAMAAoAAAAHAAEAAAA=")
+tile_set = ExtResource("1_y6gbv")
+
+[node name="Water" type="Node2D" parent="."]
+
+[node name="Tiles" type="TileMapLayer" parent="Water"]
+tile_map_data = PackedByteArray("AAAAAAAABgAAAAAAAAAAAAIABgAAAAEAAAAAAAQABgAAAAIAAAAAAAYABgAAAAMAAAACAAAABgABAAAAAAACAAIABgABAAEAAAACAAQABgABAAIAAAACAAYABgABAAMAAAAEAAAABgACAAMAAAAEAAIABgACAAAAAAAEAAQABgACAAEAAAAEAAYABgACAAIAAAAGAAAABgADAAAAAAAGAAIABgADAAEAAAAGAAQABgADAAIAAAAGAAYABgADAAMAAAA=")
+tile_set = ExtResource("1_y6gbv")
+
+[node name="WindGrass" type="Node" parent="."]
+script = ExtResource("2_ktfdt")
+mapper_factory = SubResource("Resource_ktfdt")
+metadata/_custom_type_script = "uid://do1yu6e6veq7k"
+
+[node name="Tiles" type="TileMapLayer" parent="WindGrass"]
+tile_map_data = PackedByteArray("AAAAAAAABAAAAAAAAAAAAAIAAgAAAAEAAAAAAAQAAgAAAAIAAAAAAAYAAgAAAAMAAAACAAAAAgABAAAAAAACAAIAAgABAAEAAAACAAQAAgABAAIAAAACAAYAAgABAAMAAAAEAAAAAgACAAAAAAAEAAIAAgACAAEAAAAEAAQAAgACAAIAAAAEAAYAAgACAAMAAAAGAAAAAgADAAMAAAAGAAIAAgADAAIAAAAGAAQAAgADAAEAAAAGAAYAAgADAAAAAAAIAAAABwACAAEAAAAMAAAABwACAAEAAAAMAAIABwACAAEAAAAMAAQABwACAAEAAAAMAAYABwACAAEAAAAMAAgABwACAAEAAAAMAAoABwACAAEAAAAKAAAAAgACAAEAAAAKAAIAAgACAAEAAAAKAAQAAgACAAEAAAAKAAYAAgACAAEAAAAKAAgAAgACAAEAAAAKAAoAAgACAAEAAAA=")
+tile_set = ExtResource("1_y6gbv")
+
+[node name="Decorations" type="TileMapLayer" parent="WindGrass"]
+tile_map_data = PackedByteArray("AAAKAAAAAAAFAAAAAAAKAAIAAAAGAAAAAAAKAAQAAAAHAAAAAAAKAAYAAAAFAAEAAAAKAAgAAAAGAAEAAAAKAAoAAAAHAAEAAAAMAAAAAAAFAAAAAAAMAAIAAAAGAAAAAAAMAAQAAAAHAAAAAAAMAAYAAAAFAAEAAAAMAAgAAAAGAAEAAAAMAAoAAAAHAAEAAAA=")
+tile_set = ExtResource("1_y6gbv")
+
+[node name="FireBiome" type="Node" parent="."]
+script = ExtResource("2_ktfdt")
+mapper_factory = SubResource("Resource_g55p4")
+metadata/_custom_type_script = "uid://do1yu6e6veq7k"
+
+[node name="Tiles" type="TileMapLayer" parent="FireBiome"]
+tile_map_data = PackedByteArray("AAAAAAAAAQAAAAAAAAAAAAIAAQAAAAEAAAAAAAQAAQAAAAIAAAAAAAYAAQAAAAMAAAACAAAAAQABAAAAAAACAAIAAQABAAEAAAACAAQAAQABAAIAAAACAAYAAQABAAMAAAAEAAAAAQACAAAAAAAEAAIAAQACAAEAAAAEAAQAAQACAAIAAAAEAAYAAQACAAMAAAAGAAAAAQADAAAAAAAGAAIAAQADAAEAAAAGAAQAAQADAAIAAAAGAAYAAQADAAMAAAAIAAAABwACAAEAAAAKAAAAAQACAAEAAAAKAAIAAQACAAEAAAAKAAQAAQACAAEAAAAKAAYAAQACAAEAAAAKAAgAAQACAAEAAAAKAAoAAQACAAEAAAAMAAAABwACAAEAAAAMAAIABwACAAEAAAAMAAQABwACAAEAAAAMAAYABwACAAEAAAAMAAgABwACAAEAAAAMAAoABwACAAEAAAA=")
+tile_set = ExtResource("1_y6gbv")
+
+[node name="Decorations" type="TileMapLayer" parent="FireBiome"]
+tile_map_data = PackedByteArray("AAAKAAAAAAAFAAAAAAAKAAIAAAAGAAAAAAAKAAQAAAAHAAAAAAAKAAYAAAAFAAEAAAAKAAgAAAAGAAEAAAAKAAoAAAAHAAEAAAAMAAAAAAAFAAAAAAAMAAIAAAAGAAAAAAAMAAQAAAAHAAAAAAAMAAYAAAAFAAEAAAAMAAgAAAAGAAEAAAAMAAoAAAAHAAEAAAA=")
+tile_set = ExtResource("1_y6gbv")
+
+[node name="Overworld" type="Node" parent="."]
+script = ExtResource("2_ktfdt")
+mapper_factory = SubResource("Resource_jqe1a")
+metadata/_custom_type_script = "uid://do1yu6e6veq7k"
+
+[node name="target" type="TileMapLayer" parent="Overworld"]
+
+[node name="decorations" type="TileMapLayer" parent="Overworld"]
+
+[node name="WFC2DGenerator" type="Node" parent="."]
+script = ExtResource("5_g55p4")
+metadata/_custom_type_script = "uid://chytbcpxjkn5o"
