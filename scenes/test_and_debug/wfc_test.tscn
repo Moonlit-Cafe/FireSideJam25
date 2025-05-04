@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=4 uid="uid://tn8wnpcsxrq5"]
+[gd_scene load_steps=14 format=4 uid="uid://tn8wnpcsxrq5"]
 
 [ext_resource type="Script" uid="uid://b2qqmtfn1c1nh" path="res://scenes/test_and_debug/wfc_test.gd" id="1_1ko8f"]
 [ext_resource type="TileSet" uid="uid://ont3d4pvxurd" path="res://assets/images/wave_tiles/new_wave_tile_set.tres" id="1_t32wb"]
@@ -7,7 +7,6 @@
 [ext_resource type="Script" uid="uid://cnwagyi7q0qi2" path="res://addons/wfc/problems/2d/mappers/mapper_2d_factory.gd" id="3_0bq1e"]
 [ext_resource type="Script" uid="uid://chytbcpxjkn5o" path="res://addons/wfc/nodes/generator_2d.gd" id="3_al3ws"]
 [ext_resource type="Script" uid="uid://bcxfurx8miujl" path="res://scenes/test_and_debug/progress_indicator.gd" id="5_1ko8f"]
-[ext_resource type="Script" uid="uid://cvxdtmbhre6ly" path="res://addons/wfc/solver/solver_settings.gd" id="7_5k1we"]
 [ext_resource type="Script" uid="uid://d30pmyvkhffcc" path="res://addons/wfc/runners/runner_multithreaded_settings.gd" id="7_tky42"]
 
 [sub_resource type="Resource" id="Resource_an7pg"]
@@ -21,16 +20,6 @@ bg_color = Color(0.6, 0.6, 0.6, 0.807843)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xru5r"]
 bg_color = Color(0.6, 0.6, 0.6, 0.858824)
-
-[sub_resource type="Resource" id="Resource_rxpyj"]
-script = ExtResource("7_5k1we")
-allow_backtracking = true
-require_backtracking = false
-backtracking_limit = -1
-sparse_history_start = 10
-sparse_history_interval = 10
-force_ac3 = true
-metadata/_custom_type_script = "uid://cvxdtmbhre6ly"
 
 [sub_resource type="Resource" id="Resource_5k1we"]
 script = ExtResource("7_tky42")
@@ -55,7 +44,6 @@ tile_map_data = PackedByteArray("AAAAAAAAAAABAAEAAAAAAAoAAAABAAEAAAAAAAgAAAABAAE
 tile_set = ExtResource("1_t32wb")
 
 [node name="decorations" type="TileMapLayer" parent="sample"]
-visible = false
 tile_map_data = PackedByteArray("AAAAAAAAAAAFAAEAAAAAAAIAAAAFAAAAAAAAAAQAAAAGAAAAAAAAAAYAAAAHAAAAAAAAAAgAAAAGAAEAAAAAAAoAAAAHAAEAAAA=")
 tile_set = ExtResource("1_t32wb")
 
@@ -105,7 +93,6 @@ script = ExtResource("3_al3ws")
 target = NodePath("../target")
 rect = Rect2i(0, 0, 90, 90)
 positive_sample = NodePath("../sample")
-solver_settings = SubResource("Resource_rxpyj")
 multithreaded_runner_settings = SubResource("Resource_5k1we")
 render_intermediate_results = true
 metadata/_custom_type_script = "uid://chytbcpxjkn5o"
