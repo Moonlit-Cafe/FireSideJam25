@@ -14,7 +14,6 @@ config/name="FireSide"
 config/version="0.0.0"
 run/main_scene="uid://dluxylcoh10ed"
 config/features=PackedStringArray("4.4", "GL Compatibility")
-config/icon="res://icon.svg"
 
 [autoload]
 
@@ -29,7 +28,6 @@ JobManager="*res://autoloads/gameplay/job_manager.gd"
 
 [display]
 
-window/size/resizable=false
 window/stretch/mode="viewport"
 window/stretch/scale_mode="integer"
 

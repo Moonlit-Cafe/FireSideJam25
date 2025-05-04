@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=4 uid="uid://byv88rsrbvm30"]
+[gd_scene load_steps=18 format=4 uid="uid://byv88rsrbvm30"]
 
 [ext_resource type="Script" uid="uid://b2qqmtfn1c1nh" path="res://scenes/test_and_debug/wfc_test.gd" id="1_1ko8f"]
 [ext_resource type="TileSet" uid="uid://ont3d4pvxurd" path="res://assets/images/wave_tiles/new_wave_tile_set.tres" id="1_t32wb"]
@@ -7,12 +7,11 @@
 [ext_resource type="Script" uid="uid://cnwagyi7q0qi2" path="res://addons/wfc/problems/2d/mappers/mapper_2d_factory.gd" id="3_0bq1e"]
 [ext_resource type="PackedScene" uid="uid://cvq41kwc482f7" path="res://scenes/entity/items/breeze_berry.tscn" id="3_3ncsk"]
 [ext_resource type="Script" uid="uid://chytbcpxjkn5o" path="res://addons/wfc/nodes/generator_2d.gd" id="3_al3ws"]
-[ext_resource type="PackedScene" path="res://scenes/entity/items/dusgrapes.tscn" id="3_qck4w"]
-[ext_resource type="PackedScene" path="res://scenes/entity/items/geotato.tscn" id="4_qxjoh"]
+[ext_resource type="PackedScene" uid="uid://dxd6cbx2y882x" path="res://scenes/entity/items/dusgrapes.tscn" id="3_qck4w"]
+[ext_resource type="PackedScene" uid="uid://gcd7ph0qw7a1" path="res://scenes/entity/items/geotato.tscn" id="4_qxjoh"]
 [ext_resource type="Script" uid="uid://bcxfurx8miujl" path="res://scenes/test_and_debug/progress_indicator.gd" id="5_1ko8f"]
-[ext_resource type="PackedScene" path="res://scenes/entity/items/florange.tscn" id="6_4pf4r"]
-[ext_resource type="Script" uid="uid://d30pmyvkhffcc" path="res://addons/wfc/runners/runner_multithreaded_settings.gd" id="7_tky42"]
-[ext_resource type="Script" uid="uid://cvxdtmbhre6ly" path="res://addons/wfc/solver/solver_settings.gd" id="9_8akcy"]
+[ext_resource type="PackedScene" uid="uid://cs6i12j5hs1no" path="res://scenes/entity/items/florange.tscn" id="6_4pf4r"]
+[ext_resource type="Script" uid="uid://nc3bea3ghpan" path="res://addons/wfc/runners/runner_main_thread_settings.gd" id="12_pxytq"]
 
 [sub_resource type="Resource" id="Resource_an7pg"]
 script = ExtResource("3_0bq1e")
@@ -26,22 +25,12 @@ bg_color = Color(0.6, 0.6, 0.6, 0.807843)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xru5r"]
 bg_color = Color(0.6, 0.6, 0.6, 0.858824)
 
-[sub_resource type="Resource" id="Resource_8akcy"]
-script = ExtResource("9_8akcy")
-allow_backtracking = true
-require_backtracking = false
-backtracking_limit = -1
-sparse_history_start = 10
-sparse_history_interval = 10
-force_ac3 = true
-metadata/_custom_type_script = "uid://cvxdtmbhre6ly"
+[sub_resource type="Resource" id="Resource_q7hg2"]
+script = ExtResource("12_pxytq")
+max_ms_per_frame = 10
+metadata/_custom_type_script = "uid://nc3bea3ghpan"
 
-[sub_resource type="Resource" id="Resource_5k1we"]
-script = ExtResource("7_tky42")
-max_threads = -1
-metadata/_custom_type_script = "uid://d30pmyvkhffcc"
-
-[node name="WfcTest" type="Node2D" node_paths=PackedStringArray("main", "deco", "wfc_generator", "stitch_generator", "collectable_holder")]
+[node name="WfcTest" type="Node2D" node_paths=PackedStringArray("main", "deco", "wfc_generator", "collectable_holder")]
 script = ExtResource("1_1ko8f")
 main = NodePath("target/main")
 deco = NodePath("target/decorations")
@@ -49,7 +38,6 @@ wfc_generator = NodePath("WFC2DGenerator")
 grass_collectables = Array[PackedScene]([ExtResource("2_q7hg2"), ExtResource("3_qck4w"), ExtResource("4_qxjoh")])
 windgrass_collectables = Array[PackedScene]([ExtResource("3_3ncsk")])
 firegrass_collectables = Array[PackedScene]([ExtResource("6_4pf4r")])
-stitch_generator = NodePath("Stitch")
 collectable_holder = NodePath("CollectableHolder")
 
 [node name="sample" type="Node" parent="."]
@@ -127,20 +115,11 @@ script = ExtResource("3_al3ws")
 target = NodePath("../target")
 rect = Rect2i(0, 0, 96, 64)
 positive_sample = NodePath("../sample")
-solver_settings = SubResource("Resource_8akcy")
-multithreaded_runner_settings = SubResource("Resource_5k1we")
+main_thread_runner_settings = SubResource("Resource_q7hg2")
+use_multithreading = false
 render_intermediate_results = true
-metadata/_custom_type_script = "uid://chytbcpxjkn5o"
-
-[node name="Stitch" type="Node" parent="."]
-script = ExtResource("3_al3ws")
-target = NodePath("../target")
-rect = Rect2i(0, 0, 96, 64)
-positive_sample = NodePath("../target")
-multithreaded_runner_settings = SubResource("Resource_5k1we")
 metadata/_custom_type_script = "uid://chytbcpxjkn5o"
 
 [node name="CollectableHolder" type="Node" parent="."]
 
 [connection signal="done" from="WFC2DGenerator" to="." method="_on_wfc_finished"]
-[connection signal="done" from="Stitch" to="." method="_on_wfc_finished"]

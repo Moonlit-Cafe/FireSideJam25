@@ -7,7 +7,6 @@ class_name LevelGenerator extends Node2D
 @export var windgrass_collectables : Array[PackedScene]
 @export var firegrass_collectables : Array[PackedScene]
 @export var water_collectables : Array[PackedScene]
-@export var stitch_generator : WFC2DGenerator
 @export var collectable_holder : Node
 
 # TODO: Find a better way of utilizing these, may just reduce to 2.
@@ -61,8 +60,6 @@ func _generate_biomes() -> void:
 	
 	wfc_generator.start()
 	await wfc_generator.done
-	#stitch_generator.start()
-	#await stitch_generator.done
 	_add_collectables()
 
 func _define_noise(noise: FastNoiseLite) -> void:
