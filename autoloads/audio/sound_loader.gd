@@ -10,22 +10,22 @@ func load_audio() -> void:
 
 func load_ost() -> void:
 	# Add OST loads here
-	var song_list : Array[AudioStream] = [
-		preload("res://assets/audio/ost/craft.wav"),
-		preload("res://assets/audio/ost/dToN.wav"),
-		preload("res://assets/audio/ost/menu.wav"),
-		preload("res://assets/audio/ost/newItem.wav"),
-		preload("res://assets/audio/ost/nToD.wav"),
-		preload("res://assets/audio/ost/oldRec.wav"),
-		preload("res://assets/audio/ost/overworld.wav"),
-		preload("res://assets/audio/ost/requestDone.wav"),
-		preload("res://assets/audio/ost/shop.wav"),
-		preload("res://assets/audio/ost/town.wav"),
-	]
+	var song_list : Dictionary[int, Array] = {
+		0: [preload("res://assets/audio/ost/craft.wav"), 64.8],
+		1: [preload("res://assets/audio/ost/dToN.wav"), -1],
+		2: [preload("res://assets/audio/ost/menu.wav"), 76.8],
+		3: [preload("res://assets/audio/ost/newItem.wav"), -1],
+		4: [preload("res://assets/audio/ost/nToD.wav"), -1],
+		5: [preload("res://assets/audio/ost/oldRec.wav"), -1],
+		6: [preload("res://assets/audio/ost/overworld.wav"), 169.412],
+		7: [preload("res://assets/audio/ost/requestDone.wav"), -1],
+		8: [preload("res://assets/audio/ost/shop.wav"), 79.059],
+		9: [preload("res://assets/audio/ost/town.wav"), 136.0]
+	}
 	
-	for song in song_list:
-		song.resource_name = grab_name(song.resource_path)
-		MusicManager.add_ost(song)
+	for song in song_list.values():
+		song.get(0).resource_name = grab_name(song.get(0).resource_path)
+		MusicManager.add_ost(song.get(0), song.get(1))
 
 func load_sfx() -> void:
 	# Add SFX loads here

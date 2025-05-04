@@ -1,14 +1,22 @@
 extends Node
 
 #region Variable Definitions
-var song_pool : Dictionary[StringName, AudioStream]
+var song_pool : Dictionary[StringName, Array]
 var main_music_player : AudioStreamPlayer
 var secondary_music_player : AudioStreamPlayer
+var current_song : StringName
 #endregion
 
 #region Setup
 func _ready() -> void:
 	setup_music_players()
+
+func _process(delta: float) -> void:
+	if current_song != &"":
+		if song_pool.get(current_song).get(1) != -1:
+			var current_pos = main_music_player.get_playback_position()
+			if current_pos >= song_pool.get(current_song).get(1):
+				main_music_player.seek(0)
 
 func setup_music_players() -> void:
 	main_music_player = AudioStreamPlayer.new()
@@ -19,9 +27,9 @@ func setup_music_players() -> void:
 	secondary_music_player.bus = GenumHelper.BusName.get(Genum.BusID.OST)
 	add_child(secondary_music_player)
 
-func add_ost(stream: AudioStream) -> void:
+func add_ost(stream: AudioStream, loop: int) -> void:
 	print("added %s" % stream.resource_name)
-	song_pool.set(stream.resource_name, stream)
+	song_pool.set(stream.resource_name, [stream, loop])
 
 func remove_ost(stream_name: StringName) -> void:
 	if song_pool.has(stream_name):
@@ -37,10 +45,12 @@ func play_song(song_name: StringName, crossover: bool = false) -> void:
 	if not song_pool.has(song_name):
 		push_error("There's no song by the name %s in song_pool" % song_name)
 	
+	current_song = song_name
 	if crossover:
 		if main_music_player.playing:
 			# Setup new song on secondary
-			secondary_music_player.stream = song_pool.get(song_name)
+			print(song_name)
+			secondary_music_player.stream = song_pool.get(song_name).get(0)
 			secondary_music_player.volume_linear = 0
 			secondary_music_player.play()
 			
@@ -59,7 +69,7 @@ func play_song(song_name: StringName, crossover: bool = false) -> void:
 			secondary_music_player.stop()
 			secondary_music_player.stream = null
 	else:
-		main_music_player.stream = song_pool.get(song_name)
+		main_music_player.stream = song_pool.get(song_name).get(0)
 		main_music_player.play()
 
 func play_jingle(sfx: StringName) -> void:
@@ -71,4 +81,5 @@ func play_jingle(sfx: StringName) -> void:
 
 func stop_song() -> void:
 	main_music_player.stop()
+	current_song = &""
 #endregion

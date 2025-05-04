@@ -2,8 +2,6 @@ extends PlayerState
 
 @export var walk_timer : Timer
 
-# TODO: Slow down player to better match sound speed.
-
 var dir := Vector2.ZERO
 var p_dir := Vector2.ZERO
 var player : Player

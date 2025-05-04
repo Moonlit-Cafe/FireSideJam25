@@ -67,7 +67,7 @@
 		#propagate(x, y)
 #
 #
-### TODO : Set up the proper rules for our propagation
+### TO DO : Set up the proper rules for our propagation
 #func propagate(x: int, y: int):
 	#var directions = [
 		#Vector2i(1, 0),

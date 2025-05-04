@@ -6,9 +6,6 @@ class_name InteractableItem extends InteractableTile
 var picked := false
 var picked_time := Vector2i.ZERO
 
-# TODO: Change code handling so that we reference what's been picked and what hasn't
-# and that it's those that are hidden and shown. Probably an Array of AnimatedSprites?
-
 func _ready() -> void:
 	GameGlobalEvents.check_item_respawn.connect(_on_item_check_respawn)
 
