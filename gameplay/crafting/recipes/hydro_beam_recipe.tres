@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="RecipeResource" load_steps=5 format=3 uid="uid://bap8kkxbcmghs"]
+
+[ext_resource type="Script" uid="uid://cvojyriksvfr0" path="res://gameplay/crafting/recipe_resource.gd" id="1_p5brb"]
+[ext_resource type="Resource" uid="uid://b6k50wgph8o2o" path="res://gameplay/crafting/ingredient/zanana.tres" id="1_tmw5w"]
+[ext_resource type="Resource" uid="uid://cu6uq2ejbuc2t" path="res://gameplay/crafting/ingredient/watermelon.tres" id="2_jvxhi"]
+[ext_resource type="Resource" uid="uid://663orhgwnnho" path="res://gameplay/crafting/bottles/hydro_beam.tres" id="3_1gow6"]
+
+[resource]
+script = ExtResource("1_p5brb")
+item_result_bottle = ExtResource("3_1gow6")
+item_ingredient_1 = ExtResource("1_tmw5w")
+item_ingredient_2 = ExtResource("2_jvxhi")
+metadata/_custom_type_script = "uid://cvojyriksvfr0"

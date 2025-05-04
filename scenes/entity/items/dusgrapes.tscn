@@ -1,0 +1,44 @@
+[gd_scene load_steps=8 format=3 uid="uid://dxd6cbx2y882x"]
+
+[ext_resource type="Script" uid="uid://c66mmd7np42id" path="res://scenes/entity/items/interactable_item.gd" id="1_srl3n"]
+[ext_resource type="Resource" uid="uid://t3g65mbldp6p" path="res://gameplay/crafting/ingredient/breezeberry.tres" id="2_c2cyk"]
+[ext_resource type="Texture2D" uid="uid://5xe7o3kqyqy1" path="res://assets/images/sprites/foliage/duskgrape-vine.png" id="3_k4f30"]
+[ext_resource type="Texture2D" uid="uid://laqrim0hwq41" path="res://assets/images/sprites/fruit/duskgrape-small.png" id="4_sh73k"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5a4ug"]
+atlas = ExtResource("4_sh73k")
+region = Rect2(0, 0, 12, 14)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_urcmf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5a4ug")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uirgf"]
+size = Vector2(32, 32)
+
+[node name="Dusgrapes" type="StaticBody2D" node_paths=PackedStringArray("sprites_to_hide")]
+collision_layer = 2
+script = ExtResource("1_srl3n")
+item_type = ExtResource("2_c2cyk")
+sprites_to_hide = [NodePath("Grape"), NodePath("Grape2")]
+
+[node name="Vine" type="Sprite2D" parent="."]
+texture = ExtResource("3_k4f30")
+
+[node name="Grape" type="AnimatedSprite2D" parent="."]
+position = Vector2(-8, -4)
+sprite_frames = SubResource("SpriteFrames_urcmf")
+
+[node name="Grape2" type="AnimatedSprite2D" parent="."]
+position = Vector2(9, -3)
+sprite_frames = SubResource("SpriteFrames_urcmf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_uirgf")

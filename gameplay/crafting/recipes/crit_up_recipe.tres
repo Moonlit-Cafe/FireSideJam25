@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="RecipeResource" load_steps=5 format=3 uid="uid://bkhe2klh621yl"]
+
+[ext_resource type="Script" uid="uid://cvojyriksvfr0" path="res://gameplay/crafting/recipe_resource.gd" id="1_vjhxk"]
+[ext_resource type="Resource" uid="uid://b6k50wgph8o2o" path="res://gameplay/crafting/ingredient/zanana.tres" id="1_yf24k"]
+[ext_resource type="Resource" uid="uid://dwjfj3x67dxgc" path="res://gameplay/crafting/ingredient/dawnapple.tres" id="2_uyu28"]
+[ext_resource type="Resource" uid="uid://2md1uema8aay" path="res://gameplay/crafting/bottles/crit_up.tres" id="3_dyg5a"]
+
+[resource]
+script = ExtResource("1_vjhxk")
+item_result_bottle = ExtResource("3_dyg5a")
+item_ingredient_1 = ExtResource("1_yf24k")
+item_ingredient_2 = ExtResource("2_uyu28")
+metadata/_custom_type_script = "uid://cvojyriksvfr0"

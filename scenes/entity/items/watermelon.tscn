@@ -1,8 +1,9 @@
-[gd_scene load_steps=19 format=3 uid="uid://8ncxew5ka20c"]
+[gd_scene load_steps=20 format=3 uid="uid://8ncxew5ka20c"]
 
 [ext_resource type="Script" uid="uid://c66mmd7np42id" path="res://scenes/entity/items/interactable_item.gd" id="1_ps7pc"]
 [ext_resource type="Resource" uid="uid://cu6uq2ejbuc2t" path="res://gameplay/crafting/ingredient/watermelon.tres" id="2_bsyeb"]
 [ext_resource type="Texture2D" uid="uid://bbldicxsi3k56" path="res://assets/images/sprites/fruit/watermelon-small.png" id="3_b3e5u"]
+[ext_resource type="Texture2D" uid="uid://b142aiba7qs5q" path="res://assets/images/sprites/foliage/watermelon-vine.png" id="3_yon3l"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yon3l"]
 atlas = ExtResource("3_b3e5u")
@@ -106,11 +107,16 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_afmpp"]
 size = Vector2(16, 16)
 
-[node name="Watermelon" type="StaticBody2D"]
+[node name="Watermelon" type="StaticBody2D" node_paths=PackedStringArray("sprites_to_hide")]
 script = ExtResource("1_ps7pc")
 item_type = ExtResource("2_bsyeb")
+sprites_to_hide = [NodePath("Melon")]
+interact_type = 1
 
-[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+[node name="Vines" type="Sprite2D" parent="."]
+texture = ExtResource("3_yon3l")
+
+[node name="Melon" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_ulprs")
 frame_progress = 0.0560843
 

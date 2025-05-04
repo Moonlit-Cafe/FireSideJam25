@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="RecipeResource" load_steps=5 format=3 uid="uid://cst1a3xna2naf"]
+
+[ext_resource type="Resource" uid="uid://cdr48ighyod3a" path="res://gameplay/crafting/ingredient/geotato.tres" id="1_mu8w2"]
+[ext_resource type="Resource" uid="uid://b6k50wgph8o2o" path="res://gameplay/crafting/ingredient/zanana.tres" id="2_q8dmd"]
+[ext_resource type="Script" uid="uid://cvojyriksvfr0" path="res://gameplay/crafting/recipe_resource.gd" id="3_iqq4n"]
+[ext_resource type="Resource" uid="uid://ypem5axfl8lu" path="res://gameplay/crafting/bottles/quake.tres" id="3_xiwip"]
+
+[resource]
+script = ExtResource("3_iqq4n")
+item_result_bottle = ExtResource("3_xiwip")
+item_ingredient_1 = ExtResource("1_mu8w2")
+item_ingredient_2 = ExtResource("2_q8dmd")
+metadata/_custom_type_script = "uid://cvojyriksvfr0"

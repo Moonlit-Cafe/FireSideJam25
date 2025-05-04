@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="RecipeResource" load_steps=5 format=3 uid="uid://be88hslceyswq"]
+
+[ext_resource type="Script" uid="uid://cvojyriksvfr0" path="res://gameplay/crafting/recipe_resource.gd" id="1_01xaj"]
+[ext_resource type="Resource" uid="uid://b6k50wgph8o2o" path="res://gameplay/crafting/ingredient/zanana.tres" id="1_vici3"]
+[ext_resource type="Resource" uid="uid://th8r0rx5u1tg" path="res://gameplay/crafting/ingredient/dusgrapes.tres" id="2_f67ee"]
+[ext_resource type="Resource" uid="uid://dst5vt06vk4r1" path="res://gameplay/crafting/bottles/blink.tres" id="3_1bk7l"]
+
+[resource]
+script = ExtResource("1_01xaj")
+item_result_bottle = ExtResource("3_1bk7l")
+item_ingredient_1 = ExtResource("1_vici3")
+item_ingredient_2 = ExtResource("2_f67ee")
+metadata/_custom_type_script = "uid://cvojyriksvfr0"

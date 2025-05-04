@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="RecipeResource" load_steps=5 format=3 uid="uid://bi1xikx526oir"]
+
+[ext_resource type="Resource" uid="uid://t3g65mbldp6p" path="res://gameplay/crafting/ingredient/breezeberry.tres" id="1_2i5lq"]
+[ext_resource type="Script" uid="uid://cvojyriksvfr0" path="res://gameplay/crafting/recipe_resource.gd" id="1_grhop"]
+[ext_resource type="Resource" uid="uid://d36o1xjnx62bj" path="res://gameplay/crafting/ingredient/florange.tres" id="2_m6cyo"]
+[ext_resource type="Resource" uid="uid://bae2uq3jex7ws" path="res://gameplay/crafting/bottles/enrage.tres" id="3_y80tm"]
+
+[resource]
+script = ExtResource("1_grhop")
+item_result_bottle = ExtResource("3_y80tm")
+item_ingredient_1 = ExtResource("1_2i5lq")
+item_ingredient_2 = ExtResource("2_m6cyo")
+metadata/_custom_type_script = "uid://cvojyriksvfr0"

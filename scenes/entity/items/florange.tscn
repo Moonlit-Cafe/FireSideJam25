@@ -1,0 +1,97 @@
+[gd_scene load_steps=15 format=3 uid="uid://cs6i12j5hs1no"]
+
+[ext_resource type="Script" uid="uid://c66mmd7np42id" path="res://scenes/entity/items/interactable_item.gd" id="1_mlpr4"]
+[ext_resource type="Resource" uid="uid://t3g65mbldp6p" path="res://gameplay/crafting/ingredient/breezeberry.tres" id="2_eruga"]
+[ext_resource type="Texture2D" uid="uid://bavudw03sqycg" path="res://assets/images/sprites/foliage/florange-tree.png" id="3_1ygt1"]
+[ext_resource type="Texture2D" uid="uid://cib0ngxfmxdx7" path="res://assets/images/sprites/fruit/florange-small.png" id="4_5bmjx"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wluy5"]
+atlas = ExtResource("4_5bmjx")
+region = Rect2(0, 0, 7, 7)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6f5ja"]
+atlas = ExtResource("4_5bmjx")
+region = Rect2(7, 0, 7, 7)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1uo73"]
+atlas = ExtResource("4_5bmjx")
+region = Rect2(14, 0, 7, 7)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cxkmg"]
+atlas = ExtResource("4_5bmjx")
+region = Rect2(21, 0, 7, 7)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jmxav"]
+atlas = ExtResource("4_5bmjx")
+region = Rect2(28, 0, 7, 7)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p0m0s"]
+atlas = ExtResource("4_5bmjx")
+region = Rect2(35, 0, 7, 7)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ksp0q"]
+atlas = ExtResource("4_5bmjx")
+region = Rect2(42, 0, 7, 7)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l5g03"]
+atlas = ExtResource("4_5bmjx")
+region = Rect2(49, 0, 7, 7)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_s6otf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wluy5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6f5ja")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1uo73")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cxkmg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jmxav")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p0m0s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ksp0q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l5g03")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uirgf"]
+size = Vector2(32, 32)
+
+[node name="Flourange" type="StaticBody2D" node_paths=PackedStringArray("sprites_to_hide")]
+collision_layer = 2
+script = ExtResource("1_mlpr4")
+item_type = ExtResource("2_eruga")
+sprites_to_hide = [NodePath("Orange"), NodePath("Orange2"), NodePath("Orange3")]
+
+[node name="Tree" type="Sprite2D" parent="."]
+texture = ExtResource("3_1ygt1")
+
+[node name="Orange" type="AnimatedSprite2D" parent="."]
+position = Vector2(-7, -2)
+sprite_frames = SubResource("SpriteFrames_s6otf")
+
+[node name="Orange2" type="AnimatedSprite2D" parent="."]
+position = Vector2(1, -8)
+sprite_frames = SubResource("SpriteFrames_s6otf")
+
+[node name="Orange3" type="AnimatedSprite2D" parent="."]
+position = Vector2(8, 0)
+sprite_frames = SubResource("SpriteFrames_s6otf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_uirgf")

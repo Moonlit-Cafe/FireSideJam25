@@ -11,5 +11,6 @@ enum BusID {
 enum InteractableType {
 	CRAFTING,
 	ITEM,
-	NPC
+	TASKBOARD,
+	CRATE
 }

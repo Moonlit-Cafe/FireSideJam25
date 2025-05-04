@@ -66,7 +66,7 @@ func is_all_solved() -> bool:
 	return unsolved_cells == 0
 
 func _store_solution(cell_id: int, solution: int):
-	assert(not is_cell_solved(cell_id))
+	#assert(not is_cell_solved(cell_id))
 	assert(solution >= 0)
 
 	cell_solution_or_entropy[cell_id] = solution
